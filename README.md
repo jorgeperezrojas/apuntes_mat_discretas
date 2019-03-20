@@ -7,7 +7,7 @@ El apunte lo he ido escribiendo y completando mientras dictaba los cursos de Mod
 
 ## Cosas por hacer
 
-- obviamente completar las partes que faltan
-- cambiar las imágenes a un directorio y separado para ordenarlas (tal vez ordenarlas por capítulo o sección?)
+- obviamente, completar las partes que faltan
+- cambiar las imágenes a un directorio separado para ordenarlas (tal vez ordenarlas por capítulo o sección?)
 - ...
 
