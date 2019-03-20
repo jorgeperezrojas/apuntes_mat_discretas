@@ -1,0 +1,62 @@
+\section{Relaciones de Recurrencia}
+En un ejemplo de la sección anterior se introdujo la sucesión de Fibonacci, con la siguiente definición recursiva:
+\[
+\begin{array}{rcl}
+F_0 & = & 0 \\
+F_1 & = & 1 \\
+F_n & = & F_{n-1} + F_{n-2} \;\;\;\forall n\geq 2
+\end{array}
+\]
+La definición nos dice que el valor del $n$--ésimo término de la sucesión está dado por la suma de los dos valores anteriores.
+¿Es posible encontrar una función que nos entregue de manera no recursiva el valor de $F_n$?
+¿Es posible al menos estimar el valor de $F_n$?
+A la última de estas preguntas, ya le dimos respuesta, de hecho demostramos que $F_n$ es siempre menor que $2^n$, incluso usando una técnica similar se puede demostrar que $F_n$ es mayor que $(3/2)^n$ para todo $n\geq 5$, con esto tenemos que si $n\geq 5$
+\[
+\left(\frac{3}{2}\right)^n<F_n<2^n
+\]
+A pesar de que estas desigualdades nos dan una idea del valor de $F_n$ (muy muy grande, incluso para valores pequeños de $n$) aún no tenemos una función que nos dé un valor exacto.
+En esta sección estudiaremos ecuaciones recursivas y cómo estas aparecen en definiciones de conceptos cotidianos tanto en computación, como en matemáticas, y las maneras de obtener estimaciones de sus valores.
+
+\begin{definicion}
+Sea $S$ una secuencia de valores $s_0,s_1,s_2,\ldots$. Una \emph{relación de recurrencia} para $S$ es una ecuación que define el valor de cada uno de los $s_n$ en función de algunos de sus predecesores $s_{n-1},s_{n-2},\ldots,s_1,s_0$, salvo por un conjunto de términos \emph{base} que se definen explícitamente.
+\end{definicion}
+
+La definición de relación de recurrencia tiene un ``sabor inductivo'', de hecho, inducción será una de las principales armas que usaremos para atacar nuestro problema.
+Iniciaremos el estudio con un par de ejemplos de problemas recurrentes.
+
+\begin{ejemplo}[Las Torres de Hanoi.]
+Existen tres mástiles uno de los cuales tiene discos todos de distintos radios en él (los discos tienen un agujero central por donde se insertan en el mástil).
+Estos discos están dispuestos de manera decreciente de sus radios, el disco de mayor radio está al fondo, el de menor radio al tope.
+El problema es el siguiente: Se quieren pasar todos los discos desde el mástil inicial a uno de los otros, moviendo un disco a la vez y de manera tal que durante todo el proceso un disco particular nunca esté sobre un disco de radio mayor.
+La figura~\ref{hanoi} muestra la posición inicial.
+
+\begin{figure}[h!]
+\caption{Las Torres de Hanoi.}
+\label{hanoi}
+\end{figure}
+
+Queremos encontrar cuál es el mínimo número movimientos de discos que debemos hacer para pasarlos todos desde el primer mástil a algún otro.
+Llamemos a este número $T_n$, donde $n$ representa la cantidad de discos que se encuentran inicialmente puestos en el mástil.
+Primero observamos casos pequeños, es claro que $T_0=0$, $T_1=1$ y que $T_2=3$.
+>Cómo lo hacemos para $n=3$?
+La idea ``ganadora'' es mover los primeros dos discos a uno de los mástiles, luego mover el tercer disco al mástil aún vacío y finalmente mover los dos discos sobre el tercero.
+Esto nos da la pista para mover $n$ discos: primero movemos los $n-1$ discos más pequeños a uno de los mástiles, luego movemos el disco más grande, y finalmente (nuevamente) movemos los $n-1$ discos al mástil sobre el disco de mayor radio.
+En el primer paso (mover los $n-1$ discos) tuvimos que realizar $T_{n-1}$ movimientos en total, el segundo paso (el disco más grande) significó un sólo movimiento, y el tercer paso (nuevamente $n-1$ discos) significó $T_{n-1}$ movimientos, en total para mover los $n$ discos de un mástil a otro necesitamos $2T_{n-1}+1$ movimientos.
+Tenemos entonces la siguiente relación de recurrencia:
+\[
+\begin{array}{rcl}
+T_0 & = & 0 \\
+T_n & = & 2T_{n-1} + 1 \;\;\;\forall n\geq 1
+\end{array}
+\]
+Es válido preguntarse si $T_n$ definido por la recurrencia anterior es efectivamente la menor cantidad de movimientos necesarios para resolver el problema cuando hay $n$ discos.
+La respuesta es sí, de hecho puede demostrarse por inducción en $n$ que cualquier otra solución necesitará al menos $T_n$ movimientos.
+\end{ejemplo}
+
+\begin{ejemplo}
+>Cuál es la máxima cantidad de trozos que se pueden obtener haciendo $n$ cortes rectos a una torta?
+O más académicamente, >Cuál es la máxima cantidad de regiones definidas por $n$ rectas que se pueden obtener en el plano?
+\end{ejemplo}
+
+
+

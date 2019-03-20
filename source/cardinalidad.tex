@@ -1,0 +1,554 @@
+\section{Funciones y Cardinalidad}
+En esta sección nos dedicaremos principalmente al problema de cómo establecer el tamaño de un conjunto, la cantidad de elementos que el conjunto tiene.
+El tema puede parecer trivial a simple vista, por ejemplo, todos sabemos que el siguiente conjunto
+\[
+A=\{a,b,c,d,e,f\}
+\]
+tiene $6$ elementos, cómo lo sabemos, simplemente \emph{contamos} los elementos.
+Cuando contamos los elementos del conjunto $A$ por ejemplo, establecemos una \emph{correspondencia} como la siguiente:
+\[
+\begin{array}{ccc}
+a&\rightarrow&1\\
+b&\rightarrow&2\\
+c&\rightarrow&3\\
+d&\rightarrow&4\\
+e&\rightarrow&5\\
+f&\rightarrow&6\\
+\end{array}
+\]
+de la cual concluimos que la cantidad de elementos es $6$.
+La noción de \emph{contar} es muy intuitiva y simple de aplicar cuando los conjuntos son finitos, pero >cómo contamos los elementos de un conjunto infinito?
+Veremos que podemos extender esta noción de \emph{correspondencia} para conjuntos que no necesariamente son finitos.
+Comenzaremos nuestro estudio con el concepto de función.
+
+\subsection{Funciones}
+\begin{definicion}
+Sea $f$ una relación binaria de un conjunto $A$ en un conjunto $B$, $f\subseteq A\times B$, $f$ es una función de $A$ en $B$ si dado cualquier elemento $a\in A$ existe un único elemento $b\in B$ tal que $afb$, en símbolos
+\[
+afb \wedge afc \;\;\Rightarrow\;\; b=c.
+\]
+
+Sea $a\in A$, para denotar al único elemento de $B$ que está relacionado con $a$ escribimos $f(a)$, así, si $afb$ entonces escribimos $b=f(a)$.
+Si $b=f(a)$, a $b$ se le llama \emph{imagen} de $a$, y a $a$ se le llama \emph{preimagen} de $b$.
+Cuando $f$ sea función de $A$ en $B$ escribiremos:
+\[
+\begin{array}{rrcl}
+f:& A&\rightarrow &B\\
+& a&\rightarrow &f(a)
+\end{array}
+\]
+Una función $f:A\rightarrow B$ se dice \emph{total}, si todo elemento en $A$ tiene imagen, o sea, si para todo $a\in A$ existe un $b\in B$ tal que $b=f(a)$.
+Una función que no sea total se llama \emph{parcial}.
+Cuando nosotros hablemos de función nos referiremos a función total, a menos que se diga lo contrario.
+\end{definicion}
+
+\begin{ejemplo}
+Las siguientes relaciones son todas funciones (totales) 
+de $\{0,1,2,3\}$ en $\{0,1,2,3\}$:
+\[
+\begin{array}{l}
+f_1=\{(0,0),(1,1),(2,2),(3,3)\} \\
+f_2=\{(0,1),(1,1),(2,1),(3,1)\} \\
+f_3=\{(0,3),(1,2),(2,1),(3,0)\} \\
+\end{array}
+\]
+>Cuántas funciones (totales) 
+distintas de $\{0,1,2,3\}$ en $\{0,1,2,3\}$ podemos construir?
+Exactamente 256, >por qué?.
+\end{ejemplo}
+
+\begin{ejemplo}
+Las funciones también pueden definirse usando expresiones que dado un $x$ muestren cómo obtener $f(x)$, por ejemplo las siguientes son definiciones para funciones de $\R$ en $\R$.
+\[
+\begin{array}{l}
+\forall x\in\R,\;\; f_1(x)=x^2+1\\
+\forall x\in\R,\;\; f_2(x)=\lfloor x+\sqrt{x}\rfloor\\
+\forall x\in\R,\;\; f_3(x)=0 \\
+\forall x\in\R,\;\; f_4(x)=\left\{
+														\begin{array}{rr}
+														1 & \text{si }x\geq 0\\
+														-1 & \text{si }x<0
+														\end{array}
+														\right.
+\end{array}
+\]
+\end{ejemplo}
+
+\begin{ejemplo}
+Sea $A$ un conjunto cualquiera, las siguientes son funciones de $A$ en $\P(A)$.
+\[
+\begin{array}{l}
+\forall a\in A,\;\; f_1(a)=\{a\} \\
+\forall a\in A,\;\; f_2(a)=A-\{a\} \\
+\forall a\in A,\;\; f_3(a)=\emptyset
+\end{array}
+\]
+\end{ejemplo}
+
+\begin{definicion}
+Diremos que una función $f:A\rightarrow B$ es:
+\begin{enumerate}
+  \item Inyectiva (o 1-1) si para cada par de elementos $x,y$ ocurre que $f(x)=f(y)\Rightarrow x=y$ (o equivalentemente $x\not=y\Rightarrow f(x)\not=f(y)$), es decir no existen dos elementos distintos en $A$ con la misma imagen.
+  \item Sobreyectiva (o simplemente sobre) si cada elemento en $b\in B$ tiene una preimagen en $a\in A$, o sea, $\forall b\in B\;\;\exists a\in A$ tal que $f(a)=b$.
+  \item Biyectiva si es al mismo tiempo inyectiva y sobreyectiva.
+\end{enumerate}
+\end{definicion}
+
+\begin{ejemplo}
+A continuación se listan funciones y las propiedades que cumplen (o no cumplen):
+\begin{enumerate}
+  \itemsep 0pt
+  \item $f:A\rightarrow\P(A)$, $\forall a\in A$ $f(a)=\{a\}$, es inyectiva y no sobreyectiva.
+  \item $f:A\rightarrow\P(A)$, $\forall a\in A$ $f(a)=\emptyset$, ni inyectiva ni sobreyectiva.
+  \item $f:\N\rightarrow\{0,1,2,3\}$, $\forall n\in\N$ $f(n)=n\mod 4$, es sobreyectiva y no inyectiva.
+  \item $f:\{0,1,2,3\}\rightarrow\{0,1,2,3\}$, $f(n)=n+2\mod 4$, es biyectiva.
+\end{enumerate}
+\end{ejemplo}
+
+Una propiedad muy interesante de las funciones y los conjuntos finitos es la siguiente:
+
+\begin{teorema}[Principio de los Cajones (o del Palomar).]
+Suponga que se tienen $m$ pelotas y $n$ cajones y que $m>n$, entonces, después de repartir las $m$ pelotas en los $n$ cajones, necesariamente existirá un cajón con más de una pelota.
+
+En lenguaje matemático, si se tiene una función $f:\{0,1,\ldots,m-1\}\rightarrow\{0,1,\ldots,n-1\}$ con $m>n$, la función $f$ no puede ser inyectiva, es decir, necesariamente existirán $x,y\in\{0,1,\ldots,m-1\}$ tales que $x\not=y$ y $f(x)=f(y)$.
+
+Se puede establecer un principio similar pero con respecto a la sobreyectividad de $f$, si $f:\{0,1,\ldots,m-1\}\rightarrow\{0,1,\ldots,n-1\}$ con $m<n$, entonces $f$ no puede ser sobreyectiva.
+
+Agrupando las observaciones anteriores podemos establecer lo siguiente: la única forma de que una función $f:\{0,1,\ldots,m-1\}\rightarrow\{0,1,\ldots,n-1\}$ sea biyectiva (inyectiva y sobreyectiva al mismo tiempo), es que $m=n$.
+\end{teorema}
+
+\begin{ejemplo}
+Si en una habitación hay 8 personas, entonces necesariamente existen dos de ellas que este año celebran su cumpleaños el mismo día de la semana.
+Las 8 personas las podemos modelar como el conjunto $P=\{0,1,\ldots,7\}$ y los días de la semana como el conjunto $S=\{0,1,2\ldots,6\}$. 
+El día de la semana que se celebra el cumpleaños de cada unas resulta ser una función de $P$ en $S$, por el principio de los cajones, esta función no puede ser inyectiva, luego al menos dos personas distintas celebrarán su cumpleaños el mismo día de la semana.
+\end{ejemplo}
+
+Este principio es sumamente intuitivo, sin embargo resulta de gran utilidad cuando se trabaja con conjuntos finitos, en el contexto de computación cuando se trabaja por ejemplo con estructuras de datos como arreglos, tablas de hash, grafos, etc.
+
+\subsection{Cardinalidad}
+La \emph{cardinalidad} de un conjunto es una medida de la cantidad de elementos que posee.
+Ahora que manejamos el concepto de función, podemos formalizar la noción de cantidad de elementos de un conjunto.
+
+\begin{definicion}
+Sean $A$ y $B$ dos conjuntos cualesquiera, diremos que ``$A$ es equinumeroso con $B$'' o que ``$A$ tiene el mismo tamaño que $B$'', y escribiremos $A\eqr B$, si existe una función biyectiva entre $A$ y $B$.
+\[
+A\eqr B\;\;\;\Leftrightarrow\;\;\;\exists f:A\rightarrow B,\;\;f\text{ función biyectiva.}
+\]
+Nuestra definición dice que $A$ y $B$ tienen el mismo tamaño, si los elementos de $A$ se pueden poner en correspondencia con los elementos de $B$.
+Note que $\eqr$ es una relación definida sobre el universo de los conjuntos. 
+No es difícil notar que $\eqr$ cumple con ser refleja, simétrica y transitiva, y por lo tanto es una relación de equivalencia.
+\begin{itemize}
+  \itemsep 0pt
+  \item refleja: $f:A\rightarrow A$ tal que $f(a)=a$ $\forall a\in A$ es una función biyectiva, por lo que $A\eqr A$.
+  \item simétrica: si $A\eqr B$ $\Rightarrow$ existe $f:A\rightarrow B$ biyectiva, entonces la relación $f^{-1}:B\rightarrow A$ es también biyectiva y por lo tanto $B\eqr A$.
+  \item transitiva: si $A\eqr B$ y $B\eqr C$ $\Rightarrow$ existen $f:A\rightarrow B$ y $g:B\rightarrow C$ biyectivas, luego $f\circ g:A\rightarrow C$ (la composición de las funciones) es una función biyectiva, por lo que $A\eqr C$.
+\end{itemize}
+Dado que $\eqr$ es una relación de equivalencia, podemos tomar las clases de equivalencia inducidas por esta relación.
+A la clase de equivalencia de un conjunto $A$ le llamaremos \emph{cardinalidad} de $A$ y la anotaremos por $|A|$.
+Así si $A$ es equinumeroso con $B$, se cumple que $|A|=|B|$.
+\end{definicion}
+
+
+\subsubsection*{Conjuntos Finitos}
+Diremos que $A$ es un conjunto finito si $A\eqr\{0,1,2,\ldots,n-1\}$ para algún $n\in\N$, es decir, si existe una función biyectiva $f:A\rightarrow\{0,1,2,\ldots,n-1\}$.
+Si $A\eqr\{0,1,2,\ldots,n-1\}$ ``llamaremos'' $n$ a la cardinalidad de $A$, o sea $|A|=n$, y diremos que $A$ tiene $n$ elementos.
+Un caso especial es cuando $A=\emptyset$, en este caso $|A|=0$, de hecho, el único conjunto con cardinalidad $0$ es $\emptyset$.
+Si $A$ no es un conjunto finito diremos entonces que es un conjunto infinito.
+
+\begin{ejemplo}
+Ahora si podemos decir con autoridad que $A=\{a,b,c,d,e,f\}$ tiene $6$ elementos, o que $|A|=6$, de hecho la siguiente es una función biyectiva entre $A$ y $\{0,1,2,3,4,5\}$
+\[
+\begin{array}{ccc}
+&f\\
+a&\rightarrow&0\\
+b&\rightarrow&1\\
+c&\rightarrow&2\\
+d&\rightarrow&3\\
+e&\rightarrow&4\\
+f&\rightarrow&5\\
+\end{array}
+\]
+\end{ejemplo}
+
+El siguiente teorema nos entrega una relación entre $|A|$ y $|\P(A)|$ para conjuntos $A$ finitos, antes veremos un lema muy simple:
+
+\begin{lema}
+Sean $A$ y $B$ dos conjuntos finitos tales que $A\cap B=\emptyset$.
+Entonces $|A\cup B|=|A|+|B|$.
+
+\begin{demostracion}
+Supongamos que $|A|=n$ y que $|B|=m$.
+Sabemos entonces que $A\eqr\{0,1,\ldots n-1\}$ y que $B\eqr\{0,1,\ldots,m-1\}$, luego existen funciones biyectivas $f:A\rightarrow\{0,1,\ldots n-1\}$ y $g:B\rightarrow\{0,1,\ldots,m-1\}$.
+Sea $h:(A\cup B)\rightarrow\{0,1,\ldots,n,n+1,\ldots,n+m-1\}$ tal que
+\[
+h(x)=\left\{\begin{array}{lr}
+			f(x)&\text{si }x\in A \\
+			n+g(x)&\text{si }x\in B
+			\end{array}\right.
+\]
+Primero se debe notar que $h$ está bien definida como función ya que no existe un $x$ que pertenezca simultáneamente a $A$ y $B$.
+No es difícil notar también que $h$ es biyectiva por lo que se concluye que $|A\cup B|=n+m=|A|+|B|$.
+
+Demostraremos la biyectividad de $h$ sólo como un ejemplo de este tipo de demostraciones.
+Para demostrar biyectividad se debe establecer las propiedades de sobreyectividad e inyectividad.
+Para establecer la sobreyectividad de $h$ debemos demostrar que $\forall k\in\{0,1,\ldots,n,n+1,\ldots,n+m-1\}$ existe un $x\in A\cup B$ tal que $k=h(x)$.
+La demostración la podemos hacer por casos: si $k<n$ entonces dado que $f$ es sobreyectiva en $\{0,1,\ldots,n-1\}$ sabemos que existe un $x\in A$ tal que $k=f(x)=h(x)$, si $n\leq k<n+m$ entonces dado que $g$ es sobreyectiva en $\{0,1,\ldots,m-1\}$ sabemos que existe un $x\in B$ tal que $g(x)=k-n$ y por lo tanto $k=n+g(x)=h(x)$, finalmente $h$ es sobreyectiva en $\{0,1,\ldots,n,n+1,\ldots,n+m-1\}$.
+Para establecer la inyectividad de $h$ debemos demostrar que si $h(x)=h(y)$ entonces necesariamente $x=y$.
+Otra vez podemos trabajar por casos: si $h(x)=h(y)<n$ entonces necesariamente $h(x)=f(x)=h(y)=f(y)$ de donde se concluye que $f(x)=f(y)$ y dado que $f$ es inyectiva obtenemos que $x=y$, si en cambio $n\leq h(x)=h(y)<n+m$ sabemos que $h(x)=n+g(x)=h(y)=n+g(y)$ de donde se concluye que $g(x)=g(y)$ y dado que $g$ es inyectiva obtenemos que $x=y$, finalmente $h$ es iyectiva.
+\end{demostracion}
+\end{lema}
+
+\begin{teorema} 
+Sea $A$ un conjunto finito, entonces $|\P(A)|=2^{|A|}$.
+
+\begin{demostracion}
+La demostración se hará por inducción en la cardinalidad de $A$.
+\begin{inducciondemo}
+  \BI Si $|A|=0$ entonces $A=\emptyset$ $\Rightarrow$ $\P(A)=\{\emptyset\}\eqr\{0\}$ por lo tanto $|\P(A)|=1=2^0=2^{|A|}$.
+  \HI Supongamos que para cualquier conjunto $A$ tal que $|A|=n$ se cumple que $|\P(A)|=2^n=2^{|A|}$.
+  \TI Sea $A$ un conjunto tal que $|A|=n+1$, y sea $B=A-\{a\}$, con $a$ un elemento cualquiera de $A$.
+  El conjunto $B$ cumple con $|B|=n$,\footnote{En estricto rigor, para establecer que $|B|=n$ se debería mostrar una función biyectiva de $B$ en $\{0,1,\ldots,n\}$, hacemos el paso rápido apelando a la intuición.} por lo que $|\P(B)|=2^n$.
+  >Cómo podemos a partir de $\P(B)$ formar $\P(A)$?
+  Si nos damos cuenta en $\P(B)$ están todos los subconjuntos de $B$, es decir, todos los subconjuntos de $A$ que no contienen el elemento $a$.
+  Si llamamos $\mathcal A$ al conjunto
+  \[
+  \mathcal A=\{X\;|\;X\subseteq A\wedge a\in X\},
+  \]
+  es decir $\mathcal A$ está formado por todos los subconjuntos de $A$ que {\bf sí} contienen a $a$, no es difícil notar que $\mathcal A\cap\P(B)=\emptyset$ y que $\P(A)=\P(B)\cup\mathcal A$.
+  Ahora, la siguiente función $f:\P(B)\rightarrow\mathcal A$ tal que $f(X)=X\cup\{a\}$, es una función biyectiva de $\P(B)$ en $\mathcal A$, por lo que concluimos que $\P(B)\eqr\mathcal A$ y por lo tanto $|\P(B)|=|\mathcal A|$.
+  Luego, dado que $\mathcal A\cap\P(B)=\emptyset$ y que $\P(A)=\P(B)\cup\mathcal A$ y usando el lema anterior concluimos que 
+  \[
+  |\P(A)|=|\P(B)\cup\mathcal A|=|\P(B)|+|\mathcal A|=|\P(B)|+|\P(B)|=2^n+2^n=2^{n+1}=2^{|A|}.
+  \]
+\end{inducciondemo}
+\end{demostracion}
+\end{teorema}
+
+Este último teorema implica que si $A$ es un conjunto finito, entonces la cardinalidad de $A$, es {\bf estrictamente menor} que la de $\P(A)$.
+
+\subsubsection*{Conjuntos Infinitos}
+La noción de cardinalidad de conjuntos finitos resulta ser bastante intuitiva, pero >qué pasa cuando los conjuntos son infinitos? >cómo comparo la cantidad de elementos de dos conjuntos infinitos?.
+
+Tomemos el siguiente ejemplo, sea $\N$ el conjunto de todos los naturales y $\mathbb P=\{2k\;|\;k\in\N\}$ el conjunto de todos los naturales pares.
+>Cuál es más grande $\N$ o $\mathbb P$?
+Nuestra primera respuesta intuitiva: $\mathbb P$ es un subconjunto propio de $\N$, $\mathbb P\subset\N$ por lo que $\N$ es más grande.
+Este razonamiento es correcto en el caso de conjuntos finitos...
+>Qué pasa si aplicamos nuestra definición de cardinalidad?
+Hemos definido que dos conjuntos son equinumerosos, o sea tienen la misma cantidad de elementos, si existe una función biyectiva de uno en el otro.
+La función $f(n)=2n$ le asigna a cada natural un número par de la siguiente forma:
+\[
+\begin{array}{ccccccccccccccc}
+0 & 1 & 2 & 3 & \cdots & n & n+1 & \cdots \\
+\downarrow&\downarrow&\downarrow&\downarrow&\cdots&\downarrow&\downarrow&\cdots\\
+0 & 2 & 4 & 6 & \cdots & 2n & 2n+2 & \cdots
+\end{array}
+\]
+Esta es una función que ha puesto en correspondencia cada número natural con un número par, es una función biyectiva entre $\N$ y $\mathbb P$, luego $|\N|=|\mathbb P|$, o sea, <~<~existen las misma cantidad de números pares que naturales~!~!
+No es difícil notar que pasará lo mismo con el conjunto $\mathbb I$ de los números impares, de hecho $|\N|=|\mathbb P|=|\mathbb I|$.
+Esta discusión motiva nuestra siguiente definición.
+
+\begin{definicion}
+Un conjunto $A$ se dice enumerable si $|A|=|\N|$.
+%La primera observación es que para que $A$ sea enumerable necesita ser infinito (>será verdad la implicación inversa?).
+\end{definicion}
+
+\begin{teorema}
+Los conjuntos $\mathbb P$, $\mathbb I$ y $\Z$ son todos conjuntos enumerables.
+
+\begin{demostracion}
+Para demostrar esto, se deben exhibir funciones biyectivas desde $\N$ a cada uno de los conjuntos.
+Para $\P$ la función $f(n)=2n$ es biyectiva, para $\mathbb I$ la función $f(n)=2n+1$ es biyectiva.
+Para $\Z$ puede resultar un poco más complicado.
+Tenemos que encontrar una forma de enviar cada natural con un entero, de manera tal de recorrer todos los enteros.
+Una posible idea es enviar los naturales pares a los enteros positivos y los naturales impares a los enteros negativos de la siguiente forma:
+\[
+\begin{array}{ccccccccccccccc}
+0 & 1 & 2 & 3 & 4 & \cdots & 2n & 2n+1 & \cdots \\
+\downarrow&\downarrow&\downarrow&\downarrow&\downarrow&\cdots&\downarrow&\downarrow&\cdots\\
+0 & -1 & 1 & -2 & 2 & \cdots & n & -(n+1) & \cdots
+\end{array}
+\]
+La función sería la siguiente
+\[
+f(n)=\left\{\begin{array}{cr}
+		\frac{n}{2}&\text{ si }n\text{ es par} \\
+		-\frac{n+1}{2}&\text{ si }n\text{ es impar}
+		\end{array}\right.
+\]
+que es biyectiva de $\N$ en $\Z$, y por lo tanto $|\N|=|\Z|$.
+\end{demostracion}
+\end{teorema}
+
+Una manera de caracterizar a los conjuntos infinitos enumerables es mediante la siguiente definición:
+
+\begin{definicion}[(Alternativa)]
+Un conjunto $A$ es enumerable si y sólo si todos sus elementos se pueden poner en una lista infinita, o sea si 
+\[
+A=\{a_0,a_1,a_2,\ldots\}
+\]
+en otras palabras, si existe una sucesión infinita
+\[
+(a_0,a_1,a_2,\ldots,a_n,a_{n+1},\ldots)
+\]
+tal que \emph{todos} los elementos de $A$ aparecen en la sucesión \emph{una única vez} cada uno.
+Si existe tal sucesión, la biyección entre $\N$ y $A$ es sumamente simple: $f(n)=a_n$.
+\end{definicion}
+
+Desde un punto de vista ``computacional'' podr\'{i}amos usar un programa en JAVA (o C, o C++, o Pascal, o cualquier lenguaje) para demostrar que un conjunto $A$ es enumerable. Si es posible implementar un programa $P$
+que imprima sólo elementos de $A$ y tal que para cualquier $a\in A$ si esperamos lo suficiente, $P$ imprimirá $a$,
+entonces $A$ es un conjunto enumerable (se debe suponer de todas maneras, que $P$ no tiene limitaciones de espacio, o sea, que puede usar variables de tamaño arbitrariamente grande).
+Esto motiva la siguiente definición.
+
+\begin{definicion}
+Un conjunto $A$ es \emph{computacionalmente enumerable} si $A$ es infinito y existe un programa $P$ tal que todos los elementos de $A$ aparecen en el output de $P$ (separados por algún símbolo especial definido de antemano).
+\end{definicion}
+
+Note que la definición no exige que los elementos aparezcan una vez cada uno en el output, pero sí que todos aparezcan en algún momento.
+Un punto ``interesante'' en la definición anterior (y que veremos más adelante) es que hay conjuntos enumerables que no son computacionalmente enumerables. O sea, existen conjuntos que pueden ponerse en una lista infinita, pero que no pueden ser puestos en esta lista por un computador.
+
+
+La anterior definición nos sirve para demostrar el siguiente teorema.
+
+\begin{teorema}
+Los conjuntos $\Q$ y $\N\times\N$ son también enumerables, o sea $|\Q|=|\N|$ y $|\N\times\N|=|\N|$.
+
+\begin{demostracion}
+A primera vista pareciera imposible que $|\Q|=|\N|$ (que la cantidad de racionales sea igual a la cantidad de naturales) ya que entre cualquier par de naturales existe una cantidad infinita de racionales, más aún, entre cualquier par de racionales existe otro racional.
+Sin embargo nuestra intuición no es de mucha utilidad en el caso infinito, debemos aplicar nuestra definición de ser enumerable.
+
+Para mostrar que un conjunto es enumerable, basta argumentar que todos sus elementos se pueden poner en una lista infinita que los contenga a todos.
+Partiremos por poner a $\N\times\N$ en una lista infinita.
+Nuestra primera aproximación podría ser una sucesión de este tipo:
+\[
+((0,0),(0,1),(0,2),\ldots,(0,n),(0,n+1),\ldots).
+\]
+El problema de esta organización es que, a pesar de que los elementos se encuentran en una lista, no todos los elementos de $\N\times\N$ aparecen en ella.
+Esta claro que una sucesión del tipo $((0,0),(1,0),(2,0),\ldots)$ tampoco funciona.
+La clave para organizar a $\N\times\N$ en una lista está en encontrar una forma de recorrer la siguiente matriz infinita:
+\[
+\left\lceil
+\begin{array}{ccccccccc}
+(0,0) & (0,1) & (0,2) & (0,3) & \cdots\\
+(1,0) & (1,1) & (1,2) & (1,3) & \cdots\\
+(2,0) & (2,1) & (2,2) & (2,3) & \cdots\\
+(3,0) & (3,1) & (3,2) & (3,3) & \cdots\\
+\vdots&\vdots&\vdots&\vdots&\ddots \\
+\end{array}
+\right.
+\]
+En nuestros anteriores intentos hemos recorrido la matriz por una de las filas o por una de las columnas, la idea es recorrerla por las diagonales, partiendo por $(0,0)$, siguiendo por la diagonal $(0,1)$, $(1,0)$, y luego $(0,2)$, $(1,1)$, $(2,0)$, etc.
+Luego la siguiente sucesión infinita
+\[
+((0,0),(0,1),(1,0),(0,2),(1,1),(2,0),(0,3),(1,2),(2,1),(3,0),\ldots)
+\]
+es tal que lista a todos los elementos de $\N\times\N$ y por consiguiente $|\N\times\N|=|\N|$.
+Desde un punto de vista algorítmico, lo que se está haciendo es listar primero todos los pares tales que sus componentes suman $0$, luego los que suman $1$, luego los que suman $2$, luego los que suman $3$, y así sucesivamente.
+
+Para demostrar que $\Q$ es enumerable podemos hacer algo parecido a como listamos los pares, $(a,b)$ representaría al racional $\frac{a}{b}$, el problema puede surgir por que dos pares distintos pueden representar al mismo racional. 
+La idea será entonces listar todas las fracciones $\frac{a}{b}$ que no se pueden reducir ($a$ y $b$ no tengan divisores comunes distintos de $1$).
+Una posible sucesión para $\Q$ es entonces:
+\[
+\left(0,\frac{1}{1},\frac{1}{2},\frac{2}{1},\frac{1}{3},\frac{3}{1},\frac{1}{4},\frac{2}{3},\frac{3}{2},\frac{4}{1},\frac{1}{5},\frac{5}{1},\frac{1}{6},\frac{2}{5},\frac{3}{4}\ldots\right)
+\]
+Como hemos puesto a $\Q$ en una lista infinita se concluye que $|\Q|=|\N|$ o sea que la cantidad de números racionales es igual a la cantidad de números naturales.
+\end{demostracion}
+\end{teorema}
+
+El alumno puede, a modo de ejercicio, hacer un programa en C++ (o su lenguaje favorito) que liste todos los elementos de $\Q^+$ y otro que liste todos los elementos de $\N\times\N$. Note que también se puede hacer para $\Q$ en general (no necesariamente los positivos), para $\Z\times \Z$, etc. No es fácil.
+
+\begin{ejemplo}
+>Cuál es la cantidad de programas válidamente escritos en C?
+>Será esta cantidad enumerable?
+>Hay tantos programas válidos en C como números naturales?
+Para responder a esta pregunta definamos $A$ como el siguiente conjunto:
+\[
+A=\{\text{los strings \texttt{s} de caracteres ASCII, tal que \texttt{s} es un programa válido en C}\}
+\]
+Aquí con programa válido en C, nos referimos a que compila siguiendo la sintaxis de C.
+Nos estamos preguntando si $|A|=|\N|$.
+Para demostrar algo como esto podríamos, encontrar una biyección entre $A$ y $\N$, listar todos los elementos de $A$ en una sucesión infinita, o implementar un programa que muestre todos los elementos de $A$.
+Las características del problema nos hacen pensar que esta última opción es la m\'as conveniente.
+Se podría entonces hacer un programa que siga las siguientes instrucciones:
+%\newpage
+\begin{enumerate}
+  \itemsep 0pt
+  \item Sea $n=1$.
+  \item Para cada strings $s$ formado por $n$ caracteres ASCII, hacer los siguiente:
+  \begin{enumerate}
+    \itemsep 0pt
+    \item[2.1.] Pasar $s$ por un compilador de C
+    \item[2.2.] Si $s$ compila correctamente, mostrarlo en pantalla
+  \end{enumerate}
+  \item Incrementar $n$ en $1$ y volver al paso 2.
+\end{enumerate}
+Este es un procedimiento para mostrar en pantalla todos los programas válidamente escritos en C.
+Dado un programa cualquiera correctamente escrito en C, si estamos dispuestos a esperar lo suficiente, nuestro procedimiento lo mostrará en pantalla.
+\end{ejemplo}
+
+\subsubsection*{Un Conjunto Enumerable que no es Computacionalmente Enumerable}
+
+En lo que sigue demostraremos que existe un conjunto enumerable que no es computacionalmente enumerable. 
+Este conjunto tendrá que ver con programas en algún lenguaje de programación. 
+El lenguaje da lo mismo pero por ahora supondremos que es C++.
+Primero note que podemos pensar que todo programa en C++ imprime strings en su output. 
+Algunos programas pueden imprimir pocos strings (por ejemplo, podría no imprimir ningún string), 
+y otros podrían imprimir muchos. 
+Por ejemplo el programa en el ejemplo anterior imprimía muchos (infinitos) strings. 
+Dado que todos los programas imprimen strings {\bf podríamos preguntarnos si un programa imprime o no su propio código en su output}. 
+Consideremos entonces el siguiente conjunto
+\begin{multline*}
+\mathcal{R} = \{\text{los strings \texttt{s} de caracteres ASCII, tal que s es un programa en C++}\\
+\text{que no imprime su propio código en el output}\}
+\end{multline*}
+Lo primero es observar que $\mathcal{R}$ es un conjunto enumerable. 
+De hecho es un conjunto que solo tiene programas en C++ dentro. Demostraremos que $\mathcal{R}$ no es un conjunto computacionalmente enumerable. 
+Para obtener una contradicción, supongamos que lo fuera. 
+Entonces existiría un programa en C++, digamos PR, que imprimiría en su output exactamente todos los elementos de $\mathcal{R}$. 
+La pregunta interesante es si PR imprime o no su propio código. 
+Si suponemos que PR imprime su propio código entonces PR no es un elemento en $\mathcal{R}$ y por lo tanto PR no debería imprimirlo lo que implicaría que PR no imprime su propio código. O sea, concluimos que PR imprime su propio código si y solo si PR no imprime su propio código lo que es una 
+contradicción.
+Este ejemplo debiera sonar muy parecido a la paradoja de Russell o a la paradoja del barbero.
+
+\subsubsection*{Conjuntos Infinitos no Enumerables}
+
+Una pregunta que surge, dado que hemos visto muchos conjuntos infinitos todos de la misma cardinalidad que $\N$, >existirán conjuntos infinitos que no sean enumerables? 
+La respuesta es sí.
+El siguiente teorema muestra el primer conjunto que veremos no es enumerable.
+
+\begin{teorema}[(Cantor)]
+El intervalo abierto real, $(0,1)\subseteq\R$ es infinito pero no enumerable, es decir $|(0,1)|\not=|\N|$.
+
+\begin{demostracion}
+La demostración la haremos por contradicción.
+Si $(0,1]$ fuera enumerable, entonces sería posible poner cada uno de sus elementos en una lista infinita que los contenga a todos, supongamos que esto es posible, o sea, que existe una lista $r_0,r_1,r_2,\ldots$ tal que contiene a todos los elementos en $(0,1)$.
+Cada uno de los $r_i$ es un numero decimal de la forma $0.d_{i0}d_{i1}d_{i2}\cdots$ con $d_{ij}\in\{0,1,2,\ldots,9\}$.
+O sea los elementos de $(0,1)$ se pueden listar de la siguiente manera:
+\[
+\begin{array}{ccl}
+r_0 & = & 0.d_{00}d_{01}d_{02}d_{03}d_{04}\cdots \\
+r_1 & = & 0.d_{10}d_{11}d_{12}d_{13}d_{14}\cdots \\
+r_2 & = & 0.d_{20}d_{21}d_{22}d_{23}d_{24}\cdots \\
+r_3 & = & 0.d_{30}d_{31}d_{32}d_{33}d_{34}\cdots \\ 
+r_4 & = & \cdots \\
+r_5 & = & \cdots \\
+\vdots
+\end{array}
+\] 
+Estamos suponiendo que en esta lista aparecen todos los números del intervalo $(0,1)$.
+Sea ahora el siguiente número decimal:
+\[
+r=0.d_1d_2d_3d_4d_5\cdots
+\]
+tal que 
+\[
+d_i=(d_{ii}+1)\mod 10
+\]
+o sea el dígito $i$--ésimo de $r$ es igual al dígito $i$--ésimo de $r_i$ más $1$ en módulo 10.
+>Qué pasa con $r$?
+Primero, es claro que $r\in (0,1)$, la pregunta crucial es si $r$ aparece en la lista $r_0,r_1,r_2,\ldots$.
+Es claro que $r\not=r_0$ ya que $r$ y $r_0$ difieren en su primer dígito después del punto decimal, también ocurre que $r\not=r_1$ ya que difieren en el segundo dígito después del punto decimal.
+Si continuamos con esta argumentación notamos que $r\not=r_i$ para todo $i$, ya que $r$ y $r_i$ difieren en el $i$--ésimo digito después del punto decimal, de lo que concluimos que $r$ no aparece en la lista infinita, lo que nos lleva a una contradicción con la suposición de que en la lista aparecían todos los elementos del intervalo $(0,1)$.
+Finalmente hemo concluido que $(0,1)$ no puede ponerse completamente en una lista y por lo tanto no es enumerable.
+\end{demostracion}
+\end{teorema}
+
+El argumento usado para demostrar el anterior teorema, se llama \emph{diagonalización} o \emph{diagonalización de Cantor} y es la clave para el establecimiento de variados resultado en matemáticas y computación.
+De hecho, el anterior teorema nos dice que es imposible escribir un programa en C++ (o en cualquier lenguaje de programación) que sea capaz de listar todos los números reales del intervalo $(0,1)$.
+La enumerabilidad le da una cota a las tareas que un computador de propósito general puede o no puede realizar.
+
+Hasta ahora hemos visto varios conjuntos infinitos enumerables y un conjunto infinito no enumerable.
+Ya sabemos que $\N$ no tiene la misma cardinalidad que el intervalo $(0,1)$.
+>Qué otros conjuntos tienen la misma cardinalidad que el intervalo $(0,1)$?
+No es difícil notar que por ejemplo $|(0,1)|=|(1,+\infty)|$, basta tomar la función real $f(x)=1/x$ que es una biyección entre estos dos conjuntos, luego tienen la misma cardinalidad.
+No es difícil tampoco encontrar una biyección entre todo $\R$ y $(0,1)$, de hecho $|\R|=|(0,1)|$.
+
+La pregunta que surge ahora es, >dónde hay más elementos en $|\N|$ o en $|\R|$?
+Intuitivamente debiéramos pensar que hay más elementos en $\R$ que en $\N$.
+En lo que sigue formalizaremos estas nociones y estableceremos un resultado que generaliza al teorema anterior.
+
+\begin{definicion}
+Sean $A$ y $B$ dos conjuntos.
+Diremos que $A\preceq B$ y lo leeremos como ``$A$ no es más grande que $B$'' si existe una función inyectiva $f:A\rightarrow B$.
+\end{definicion}
+
+La relación $\preceq$ es ``casi'' una relación de orden, de hecho es refleja ya que $A\preceq A$, transitiva ya que si $A\preceq B$ y $B\preceq C$ entonces $A\preceq C$, pero es casi antisimétrica dado que si $A\preceq B$ y $B\preceq A$ entonces no necesariamente se cumple que $A=B$, pero si se cumple que $A\eqr B$, o sea se cumple que $|A|=|B|$.
+Esto se llama el \emph{Teorema de Cantor-Bernstein-Shroeder} que demostraremos más adelante. 
+Diremos que si $A\preceq B$ entonces se cumple que $|A|\leq |B|$.
+
+Diremos que $A\prec B$ y lo leeremos como ``$A$ es más pequeño que $B$'' si $A\preceq B$ y $A\not\eqr B$.
+De forma similar a $\preceq$, si $A\prec B$ entonces diremos que se cumple que $|A|<|B|$.
+
+
+
+Una observación muy simple es que si $A\subseteq B$ entonces se cumple que $|A|\leq |B|$ (>por qué?).
+%Otra observación, que resulta por el hecho de que $\leq$ es un orden, es que si $|A|\leq|B|$ y $|B|\leq|A|$ entonces se cumple que $|A|=|B|$.
+
+\begin{ejemplo}
+Con la definición anterior, y como ya sabemos que $\N\preceq\R$ pero sabemos que $\N\not\eqr\R$, podemos establecer que $|\N|<|\R|$, o sea hay estrictamente menos números naturales que números reales.
+\end{ejemplo}
+
+Generalmente (coloquialmente) nosotros decimos que la cardinalidad de $\N$ es infinito, $|\N|=\infty$, o sea que $\N$ tiene infinitos elementos.
+De la misma manera decimos que la cardinalidad de $\R$ es infinito, $|\R|=\infty$.
+<~<~Pero acabamos de demostrar que $|\N|$ es {\bf estrictamente menor} que $|\R|$~!~!
+Esto nos dice que no podemos simplemente hablar de ``infinito'' cuando estamos en el contexto de tamaños de conjuntos, de hecho sería mucho más acertado que dijéramos $|\N|=\infty_0$ y $|\R|=\infty_1$.
+
+>Cuál es la relación entre $\infty_0$ y $\infty_1$?
+Ya hemos visto que $\infty_0<\infty_1$.
+En la literatura a $|\N|$ se le llama $\aleph_0$ (\emph{aleph} cero) en vez de $\infty_0$, y a $|\R|$ se le llama $2^{\aleph_0}=\aleph_1$ (\emph{aleph} uno).
+El que a $|\R|$ se le llame $2^{\aleph_0}=2^{|\N|}$ viene del hecho de que se puede demostrar que la cardinalidad de $\R$ es igual a la cardinalidad del conjunto potencia de $\N$, o sea $|\R|=|\P(\N)|$ y simplemente se sigue la notación del caso finito en que $|\P(A)|=2^{|A|}$.
+
+>Existe alguna cardinalidad mayor que la de $\R$?
+>Existe algún infinito mayor que $\infty_1$ ($\aleph_1$)?
+Cantor (teorema~\ref{teo:cantor}) demuestra usando su argumento de diagonalización, que para cualquier conjunto $A$ se cumple que $|A|<|\P(A)|$, lo que nos entrega toda una jerarquía de cardinalidades infinitas, una conclusión será que:
+\[
+\begin{array}{cccccccccccccc}
+|\N|&<&|\P(\N)|=|\R|&<&|\P(\P(\N))|&<&|\P(\P(\P(\N)))|&<&|\P(\P(\P(\P(\N))))|&<&\cdots \\
+\aleph_0&<&2^{\aleph_0}=\aleph_1&<&2^{\aleph_1}=\aleph_2&<&2^{\aleph_2}=\aleph_3&<&2^{\aleph_3}=\aleph_4&<&\cdots \\
+\infty_0&<&\infty_1&<&\infty_2&<&\infty_3&<&\infty_4&<&\cdots
+\end{array}
+\]
+
+Hay infinitos infinitos distintos... puede parecer un poco confuso...
+Una pregunta muy interesante que surge es que, dado que $|\N|<|\R|$, >existe algún conjunto $A$ tal que $|\N|<|A|<|\R|$?, o sea, >existe algo como un $\infty_{0\text{.}5}$?
+Esta pregunta se propuso en 1900 cómo uno de los 23 problemas más importante a resolver durante el siglo XX (la famosa lista de los 23 problemas de David Hilbert(1863--1943)).
+Lo interesante es que la pregunta se respondió pero de una manera no muy satisfactoria.
+En 1938 K. G\"odel demostró que con los axiomas de la matemática {\bf no se puede demostrar que existe} un conjunto $A$ que cumpla con $|\N|<|A|<|\R|$.
+En 1963 P. Cohen demostró que con los axiomas de la matemática {\bf no se puede demostrar que NO existe} un conjunto $A$ que cumpla con $|\N|<|A|<|\R|$.
+De esto se concluye que la existencia o no de tal conjunto no implica nada nuevo en la matemática, o sea, su existencia es independiente de los axiomas y se puede suponer que existe o suponer que no sin provocar problemas en la matemática.
+
+Terminaremos esta sección con la demostración del teorema general de Cantor.
+
+\begin{teorema}[(Cantor)]\label{teo:cantor}
+Sea $A$ un conjunto cualquiera (no necesariamente infinito), la cardinalidad de $A$ es estrictamente menor que la del conjuntos potencia de $A$, $|A|<|\P(A)|$.
+
+\begin{demostracion}
+Lo primero es ver que existe una función inyectiva de $A$ en $\P(A)$, por ejemplo $f(a)=\{a\}$ es una función inyectiva, de donde concluimos que $|A|\leq|\P(A)|$.
+Debemos demostrar que $A\not\eqr\P(A)$, para esto demostraremos que no existe un función sobreyectiva de $A$ en $P(A)$.
+Sea $f:A\rightarrow\P(A)$ una función cualquiera.
+La función $f$ es tal que a cada elementos $a\in A$ le asigna un subconjunto de $X\subseteq A$.
+Supongamos que $X=f(a)$ para algún $a$, dado que $X\subseteq A$ existen dos posibilidades, $a\in X$ o $a\not\in X$.
+Sea $D$ el siguiente conjunto:
+\[
+D=\{a\in A\;|\; a\notin f(a)\},
+\]
+o sea, $D$ es el conjunto de todos los elementos de $A$ que no pertenecen a su imagen.
+Es claro que $D\subseteq A$.
+Si $f$ fuese sobreyectiva, dado que $D\in\P(A)$ entonces necesariamente debiera existir un $b\in A$ tal que $f(b)=D$, demostraremos que para todo $b\in A$, $f(b)\not=D$ y por lo tanto $f$ no puede ser biyetiva.
+La demostración la haremos por casos:
+\begin{enumerate}
+  \item Si $b\in f(b)\Rightarrow b\notin D\Rightarrow f(b)\not=D$ ya que $f(b)$ contiene a $b$ y $D$ no.
+  \item Si $b\notin f(b)\Rightarrow b\in D\Rightarrow f(b)\not=D$ ya que $D$ contiene a $b$ y $f(b)$ no.
+\end{enumerate}
+Concluimos entonces que no existe $b$ tal que $f(b)=D$ y por lo tanto $f$ no puede ser sobreyectiva (y por lo tanto tampoco biyectiva) por lo que $A\not\eqr\P(A)$.
+
+Finalmente hemos demostrado que $|A|<|\P(A)|$, para cualquier conjunto $A$.
+\end{demostracion}
+\end{teorema}
+
+Para computación lo importante de todo este tema de cardinalidad es que, el único infinito ``alcanzable'' para un computador es $\infty_0$, o sea sólo se puede ``computar'' con conjuntos enumerables, de hecho desde la enumerabilidad surgen las restricciones de la computabilidad
+>Qué cosas es capaz de hacer un computador? 
+>Qué cosas no es capaz de hacer un computador?
+>Qué cosas puede y cuáles no puede hacer un programa en C o en un lenguaje cualquiera?
+>Existen problemas computacionales para los cuáles no haya algoritmos que los resuelvan?
+Estos temas se estudian en cursos de teoría de la computación, como en un curso de Lenguajes Formales y Teoría de Autómatas.
+

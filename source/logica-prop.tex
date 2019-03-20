@@ -1,0 +1,492 @@
+
+
+
+\section{L\'ogica Proposicional}
+
+\subsection{Sintaxis de la L\'ogica Proposicional}
+
+Usaremos variables proposicionales para indicar proposiciones {\em completas} e {\em indivisibles}.
+En general llamaremos $P$ al conjunto de variables proposicionales, y, por ejemplo,
+$p$, $q$, $r$, socrates\_es\_hombre, a las variables mismas.
+
+\begin{definicion}
+Sea $P$ un conjunto de variables proposicionales.
+El conjunto de todas las {\em f\'ormulas} de l\'ogica proposicional sobre $P$,
+denotado por $L(P)$, se define inductivamente por:
+\begin{itemize}
+\item Si $p\in P$, entonces $p$ es una f\'ormula en $L(P)$.
+\item Si $\varphi\in L(P)$, entonces $(\neg \varphi)$ es una f\'ormula en $L(P)$
+\item Si $\varphi,\psi\in L(P)$, entonces $(\varphi \wedge \psi)$,
+$(\varphi \vee \psi)$, $(\varphi \to \psi)$, y $(\varphi \ssi \psi)$ son f\'ormulas en $L(P)$
+\end{itemize}
+\end{definicion}
+
+\subsection{Sem\'antica de la L\'ogica Proposicional}
+
+>Cu\'ando una f\'ormula es verdadera? depende del {\em mundo} en el que la estamos interpretando.
+Un mundo particular le dar\'a una interpretaci\'on a cada variable proposicional, le dar\'a un
+valor {\em verdadero} o {\em falso} a cada variable.
+
+Una {\em valuaci\'on} (o {\em asignaci\'on de verdad}) para las variables de
+$P$ es una funci\'on, $\sigma:P\to \{0,1\}$.
+
+\begin{definicion}
+Sea $P$ un conjunto de variables proposicionales y $\sigma$ una asignaci\'on de verdad para $P$.
+Dada una f\'ormula $\varphi$ en $L(P)$, se definimos la funci\'on $\hat\sigma:L(P)\to \{0,1\}$, 
+por inducci\'on como sigue:
+\begin{itemize}
+\item Si $p\in P$ entonces $\hat\sigma(p)=\sigma(p)$.
+\item \[\hat\sigma(\, (\neg \varphi)\, )= 
+      \left\{ 
+      \begin{array}{cl}
+      1 & \text{si }\hat\sigma(\varphi)=0, \\
+      0 & \text{si }\hat\sigma(\varphi)=1. \\
+      \end{array}
+      \right.
+\]
+\item
+\[\hat\sigma(\, (\varphi \vee \psi)\, )= 
+      \left\{ 
+      \begin{array}{cl}
+      1 & \text{si }\hat\sigma(\varphi)=1\text{ o }\hat\sigma(\psi)=1, \\
+      0 & \text{si }\hat\sigma(\varphi)=0\text{ y }\hat\sigma(\psi)=0. \\
+      \end{array}
+      \right.
+\]
+
+\[\hat\sigma(\, (\varphi \wedge \psi)\, )= 
+      \left\{ 
+      \begin{array}{cl}
+      1 & \text{si }\hat\sigma(\varphi)=1\text{ y }\hat\sigma(\psi)=1, \\
+      0 & \text{si }\hat\sigma(\varphi)=0\text{ o }\hat\sigma(\psi)=0. \\
+      \end{array}
+      \right.
+\]
+
+\[\hat\sigma(\, (\varphi \to \psi)\, )= 
+      \left\{ 
+      \begin{array}{cl}
+      1 & \text{si }\hat\sigma(\varphi)=0\text{ o }\hat\sigma(\psi)=1, \\
+      0 & \text{si }\hat\sigma(\varphi)=1\text{ y }\hat\sigma(\psi)=0. \\
+      \end{array}
+      \right.
+\]
+
+\[\hat\sigma(\, (\varphi \ssi \psi)\, )= 
+      \left\{ 
+      \begin{array}{cl}
+      1 & \text{si }\hat\sigma(\varphi)=\hat\sigma(\psi), \\
+      0 & \text{si }\hat\sigma(\varphi)\neq\hat\sigma(\psi). \\
+      \end{array}
+      \right.
+\]
+\end{itemize}
+Diremos que $\hat\sigma(\varphi)$ es la {\em evaluaci\'on} de $\varphi$ dada la 
+asignaci\'on $\sigma$.
+\end{definicion}
+
+De ahora en adelante llamaremos simplemente $\sigma$ a $\hat\sigma$, y denotaremos a la
+a la evaluaci\'on de la f\'ormula $\varphi$ dada la asignaci\'on $\sigma$, simplmente como $\sigma(\varphi)$.
+
+\begin{definicion}
+Las f\'ormulas $\varphi,\psi\in L(P)$ son {\em l\'ogicamente equivalentes}, si para toda asignaci\'on de verdad $\sigma$ se tiene
+que $\sigma(\varphi)=\sigma(\psi)$. 
+Denotaremos por $\equiv$ la equivalencia l\'ogica, as\'{i}, si $\varphi$ y $\psi$ son l\'ogicamente equivalentes, escribiremos
+$\varphi\equiv \psi$.
+\end{definicion}
+
+\begin{ejemplo}
+Demostraremos que las f\'ormulas $(p\to q)$ y $((\neg p) \vee q)$ son l\'ogicamente equivalentes.
+Dado que ambas f\'ormulas tienen s\'olo dos variables proposicionales, la cantidad de valuaciones $\sigma:\{p,q\}\to \{0,1\}$
+son 4. Podemos probarlas todas en una tabla como la que sigue:
+
+\begin{center}
+\begin{tabular}{lcccc} %\cline{2-5} 
+& ~$p$~ & ~$q$~ & ~$(p\to q)$~ & ~$((\neg p) \vee q)$~ \\ \cline{2-5} 
+$\sigma_1$: & 0 & 0 & 1 & 1\\ %\cline{2-5}
+$\sigma_2$: & 0 & 1 & 1 & 1\\ %\cline{2-5}
+$\sigma_3$: & 1 & 0 & 0 & 0\\ %\cline{2-5}
+$\sigma_4$: & 1 & 1 & 1 & 1\\ %\cline{2-5}
+\end{tabular}
+\end{center}
+
+Cada fila de la anterior tabla corresponde a una asignaci\'on de verdad diferente, las dos primeras columnas
+corresponden a las asignaciones a las variables, y las dos siguientes al valor de verdad asignado a cada f\'ormula.
+En este caso, ambas f\'ormulas tienen exactamente el mismo valor de verdad para cada posible asignaci\'on por lo tanto
+son equivalentes. Concluimos entonces que $(p\to q)\equiv ((\neg p)\vee q)$.
+\end{ejemplo}
+
+El anterior es un ejemplo del uso de {\em Tablas de Verdad}, que son tablas en las que las filas representan
+todas las posibles valuaciones para un conjunto de variables proposicionales, 
+y las columnas, etiquetadas con una f\'ormula particular,
+representan los distintos valores de verdad de la f\'ormula en cada valuaci\'on.
+Note que dos f\'ormulas son l\'ogicamente equivalentes, si y solo si, su respectivas columnas en una tabla de verdad
+contienen exactamente la misma secuencia de valores.
+Las tablas tambi\'en nos permiten establecer algunas propiedades de conteo.
+Suponga que $P=\{p_1,p_2,\ldots, p_n\}$, >cu\'antas f\'ormulas no equivalentes hay en $L(P)$? 
+Calcule este n\'umero y contrastelo con la cantidad de f\'ormulas distintas en $L(P)$.
+
+Se puede demostrar que el reemplazo de sub-f\'ormulas equivalentes en una f\'ormula, no
+altera el valor de verdad de la f\'ormula original.
+M\'as formalmente, sea $\varphi$ una f\'ormula que contiene a $\psi$ como sub-f\'ormula, y sea
+$\psi'$ una f\'ormula tal que $\psi\equiv \psi'$. 
+Si $\varphi'$ es la f\'ormula obtenida de $\varphi$ reemplazando $\psi$ por $\psi'$, entonces $\varphi\equiv \varphi'$.
+(Haga la demostraci\'on de esta \'ultima propiedad por inducci\'on estructural. Para
+esto primero deber\'a definir inductivamente el concepto de sub-f\'ormula y formalizar
+lo que significa reemplazar una sub-f\'ormula por otra).
+
+Las siguientes son algunas equivalencias \'utiles (demuestre que se cumplen):
+\begin{enumerate}
+\item $(\varphi \vee \psi) \equiv (\psi \vee \varphi)$
+\item $(\varphi \wedge \psi) \equiv (\psi \wedge \varphi)$
+\item $(\varphi \vee (\psi \vee \chi)) \equiv ((\varphi \vee \psi) \vee \chi)$
+\item $(\varphi \wedge (\psi \wedge \chi)) \equiv ((\varphi \wedge \psi) \wedge \chi)$
+\item $(\varphi \vee (\psi \wedge \chi)) \equiv ((\varphi \vee \psi) \wedge (\varphi \vee \chi))$
+\item $(\varphi \wedge (\psi \vee \chi)) \equiv ((\varphi \wedge \psi) \vee (\varphi \wedge \chi))$
+\item $(\neg (\varphi \wedge \psi))\equiv ((\neg \varphi) \vee (\neg \psi))$
+\item $(\neg (\varphi \vee \psi))\equiv ((\neg \varphi) \wedge (\neg \psi))$
+\item $(\neg(\neg \varphi))\equiv \varphi$
+\end{enumerate}
+
+Las reglas 3 y 4, nos permiten evitar par\'entesis cuando consideramos secuencias de f\'ormulas operadas
+usando $\vee$ y $\wedge$, respectivamente. 
+De ahora en adelante escribiremos simplemente $\varphi_1 \vee \varphi_2 \vee \varphi_3$ (sin usar
+par\'entesis de asociaci\'on).
+Adicionalmente escribiremos 
+\[
+\bigvee_{i=1}^{n}\varphi_i = \varphi_1 \vee \varphi_2 \vee \cdots \vee \varphi_n.
+\] Similarmente lo haremos con $\wedge$.
+
+\begin{definicion}
+Una f\'ormula $\varphi\in L(P)$ es:
+\begin{itemize}
+\item {\em Tautolog\'{i}a} si para toda valuaci\'on $\sigma$ se tiene que $\sigma(\varphi)=1$,
+\item {\em Satisfacible} si existe una valuaci\'on $\sigma$ tal que $\sigma(\varphi)=1$,
+\item {\em Contradicci\'on} si no es satisfacible (o sea, para toda valuaci\'on $\sigma$ se tiene que $\sigma(\varphi)=0$). 
+\end{itemize}
+\end{definicion}
+
+Considere una f\'ormula $\varphi$ en $L(P)$ con $P=\{p,q,r\}$, donde lo \'unico que conocemos de $\varphi$ es
+que cumple la siguiente tabla de verdad:
+
+\begin{center}
+\begin{tabular}{ccc|cc} %\cline{2-5} 
+~$p$~ & ~$q$~ & ~~$r$~~ & ~$\varphi$~ \\ \hline 
+0 & 0 & 0 & 1\\ %\cline{2-5}
+0 & 0 & 1 & 0\\ %\cline{2-5}
+0 & 1 & 0 & 0\\ %\cline{2-5}
+0 & 1 & 1 & 1\\ %\cline{2-5}
+1 & 0 & 0 & 1\\ %\cline{2-5}
+1 & 0 & 1 & 0\\ %\cline{2-5}
+1 & 1 & 0 & 0\\ %\cline{2-5}
+1 & 1 & 1 & 1\\ %\cline{2-5}
+\end{tabular}
+\end{center}
+
+>Podemos usando s\'olo esta informaci\'on, construir efectivamente una f\'ormula que sea equivalente a $\varphi$?
+>Qu\'e operadores necesitamos para hacerlo?
+La siguiente f\'ormula muestra una respuesta positiva a la primera pregunta:
+\[
+((\neg p) \wedge (\neg q) \wedge (\neg r))\; \vee\; 
+((\neg p) \wedge q \wedge r)\; \vee\;
+(p \wedge (\neg q) \wedge (\neg r))\; \vee\;
+(p \wedge q \wedge r).
+\]
+La idea de la anterior f\'ormula es imitar la manera en que la valuaci\'on hace verdadera a $\varphi$.
+De hecho tiene exactamente la misma tabla de verdad que $\varphi$. 
+Podemos generalizar el anterior argumento para cualquier f\'ormula dada su tabla de verdad de la
+siguiente manera.
+Considere una f\'ormula $\varphi$ en donde ocurren $n$ variables proposicionales $p_1,p_2,\ldots,p_n$, y sean
+$\sigma_1,\sigma_2,\ldots,\sigma_{2^n}$, una enumeraci\'on de todas las posibles valuaciones
+para las variables en $\varphi$.
+Para cada $\sigma_j$ con $j=1,\ldots,2^n$ %tal que $\sigma_j(\varphi)=1$ 
+considere la siguiente f\'ormula $\varphi_j$
+\[
+\varphi_j=\big(\underset{\substack{i=1\ldots n\\ \sigma_j(p_i)=1}}{\bigwedge}p_i\big) 
+\wedge \big( \underset{\substack{i=1\ldots n\\ \sigma_j(p_i)=0}}{\bigwedge}(\neg p_i) \big).
+\]
+Note que $\varphi_j$ representa a la fila $j$ de la tabla de verdad para $\varphi$.
+Por ejemplo, en el caso de la f\'ormula y la tabla de verdad de m\'as arriba, suponiendo que las 
+filas se numeran desde arriba abajo, tenemos que 
+$\varphi_5=(p \wedge (\neg q) \wedge (\neg r))$.
+Lo \'unico que falta ahora es hacer la disyunci\'on de todas las f\'ormulas $\varphi_j$ para $j$ entre $1$ y $2^n$
+tal que $\sigma_j(\varphi)=1$. Finalmente obtenemos la f\'ormula
+\[
+\bigvee_{\substack{j=1\ldots 2^n\\ \sigma_j(\varphi)=1}}\varphi_j = 
+\bigvee_{\substack{j=1\ldots 2^n\\ \sigma_j(\varphi)=1}}\bigg( 
+\big(\underset{\substack{i=1\ldots n\\ \sigma_j(p_i)=1}}{\bigwedge}p_i\big) 
+\wedge \big( \underset{\substack{i=1\ldots n\\ \sigma_j(p_i)=0}}{\bigwedge}(\neg p_i) \big) \bigg).
+\]
+Se puede demostrar (h\'agalo de ejercicio) que esta \'ultima f\'ormula es l\'ogicamente equivalente
+a $\varphi$.
+El \'unico detalle que nos falta es que, si $\varphi$ es una contradicci\'on, la f\'ormula de m\'as arriba
+es ``vac\'{i}a'' ya que para toda valuaci\'on $\sigma_j$ se tendr\'{i}a que $\sigma_j(\varphi)=0$.
+Pero en este \'ultimo caso, podr\'{i}amos expresar $\varphi$ como $(p\wedge (\neg p))$.
+
+Hemos demostrado entonces que cualquier tabla de verdad puede ser representada con una f\'ormula,
+y m\'as a\'un, con una f\'ormula que s\'olo usa los conectivos l\'ogicos $\neg$, $\vee$ y $\wedge$.
+Esto motiva la siguiente definici\'on.
+
+\begin{definicion}
+Un conjunto de operadores l\'ogico $C$ se dice {\em funcionalmente completo},
+si toda f\'ormula en $L(P)$ es l\'ogicamente equivalente a una f\'ormula que usa s\'olo operadores
+en $C$.
+\end{definicion}
+
+Ya demostramos que $\{\neg,\vee,\wedge\}$ es funcionalmente completo. 
+Como ejercicio, demuestre que $\{\neg, \vee\}$ es tambi\'en funcionalmente
+completo (note que para hacer esta demostraci\'on, basta con encontrar una forma de expresar
+la conjunci\'on $(\varphi \wedge \psi)$ usando s\'olo $\neg$ y $\vee$, de todas maneras se necesita un
+argumento inductivo).
+
+\subsection{Formas Normales}
+
+Un {\em literal} es una variable proposicional o la negaci\'on de una variable proposicional, por ejemplo,
+$p$ y $(\neg r)$ son ambos literales. 
+De ahora en adelante supondremos que $\neg$ tienen {\em presedencia} sobre $\vee$ y $\wedge$, y por lo tanto
+podremos escribir una f\'ormula como $((\neg p) \vee q) \wedge (\neg r)$, simplemente como $(\neg p \vee q) \wedge \neg r$.
+Entonces, por ejemplo, $\neg p$, $q$ y $\neg r$ son literales.
+
+\begin{definicion}
+Una f\'ormula $\varphi$ est\'a en {\em Forma Normal Disyuntiva} (FND), si es una disyunci\'on de conjunciones de literales,
+o sea, si es de la forma
+\[
+B_1 \; \vee \; B_2\;  \vee\; \cdots\; \vee\; B_k
+\]
+donde cada $B_i$ es una conjunci\'on de literales, $B_i=(\ l_{i1} \wedge l_{i2} \wedge \cdots \wedge l_{ik_i}\ )$.
+Una f\'ormula $\psi$ est\'a en {\em Froma Normal Conjuntiva} (FNC), si es una conjunci\'on de disyunciones de literales,
+o sea, si es de la forma
+\[
+C_1 \; \wedge \; C_2\;  \wedge \; \cdots\; \wedge \; C_k
+\]
+donde cada $C_i$ es una disyunci\'on de literales, $C_i=(\ l_{i1} \vee l_{i2} \vee \cdots \vee l_{ik_i}\ )$.
+A una disyunci\'on de literales se le llama {\em cl\'ausula}, por ejemplo, cada una de las $C_i$ anteriores
+es una cl\'ausula.
+Entonces, una f\'ormula est\'a en FNC, si es una conjunci\'on de cl\'ausulas.
+\end{definicion}
+
+\begin{teorema}
+\begin{enumerate}
+\item Toda f\'ormula en $L(P)$ es l\'ogicamente equivalente a una f\'ormula en FND
+\item Toda f\'ormula en $L(P)$ es l\'ogicamente equivalente a una f\'ormula en FNC
+\end{enumerate}
+\end{teorema}
+
+\begin{demostracion}
+\begin{enumerate}
+\item Ya lo hicimos cuando mostramos como representar una tabla de verdad con una f\'ormula.
+\item Ejercicio. 
+\end{enumerate}
+\end{demostracion}
+
+\subsection{Consecuencia L\'ogica}
+
+Sea $P$ un conjunto de variables proposicionales.
+Dado un conjunto de f\'ormulas $\Sigma$ en $L(P)$ y una valuaci\'on $\sigma$ para las variables en $P$,
+diremos que $\sigma$ satisface $\Sigma$ si para toda f\'ormula $\varphi\in \Sigma$ se tiene que $\sigma(\varphi)=1$.
+En este caso escribimos $\sigma(\Sigma)=1$.
+
+\begin{definicion}
+Sea $\Sigma$ un conjunto de f\'ormulas en $L(P)$ y $\psi$ una f\'ormula en $L(P)$, diremos que $\psi$ es
+{\em consecuencia l\'ogica} de $\Sigma$, si para toda valuaci\'on $\sigma$ tal que $\sigma(\Sigma)=1$,
+se tiene que $\sigma(\psi)=1$.
+En este caso escribiremos $\Sigma \models \psi$.
+\end{definicion} 
+
+\begin{ejemplo}
+\begin{itemize}
+\item $\{p,\ p\to q\}\models q$ ({\em Modus Ponens})
+\item $\{\neg q,\ p\to q\}\models \neg p$ ({\em Modus Tollens})
+\item $\{p\vee q\vee r,\ p\to s,\ q\to s,\ r\to s\}\models s$ (Demostraci\'on por partes)
+\item $\{p\vee q,\ \neg q\vee r\} \models p\vee r$ (Resoluci\'on)
+\end{itemize}
+\end{ejemplo}
+
+\begin{definicion}
+Un conjunto de f\'ormulas $\Sigma$ es {\em inconsistente} si no existe una valuaci\'on $\sigma$ tal que 
+$\sigma(\Sigma)=1$.
+El conjunto $\Sigma$ es {\em satisfacible}, si existe una valuaci\'on $\sigma$ tal que $\sigma(\Sigma)=1$. 
+\end{definicion}
+
+\begin{teorema}
+La f\'ormula $\varphi$ es consecuencia l\'ogica de $\Sigma$, si y solo si, el conjunto $\Sigma \cup \{\neg \varphi\}$
+es inconsistente.
+\begin{demostracion}
+$(\Rightarrow)$ Suponga que $\Sigma\models \varphi$, demostraremos que $\Sigma \cup \{\neg \varphi\}$ es inconsistente.
+Lo haremos por contradicci\'on. Entonces, supongamos que $\Sigma \cup \{\neg \varphi\}$ es consistente.
+Esto implica que existe una valuaci\'on $\sigma$ tal que $\sigma(\Sigma\cup\{\neg \varphi\})=1$, lo que implica que 
+$\sigma(\Sigma)=1$ y $\sigma(\neg \varphi)=1$, y por lo tanto $\sigma(\Sigma)=1$ y 
+$\sigma(\varphi)=0$, lo que contradice el hecho de que $\Sigma\models \varphi$.
+
+$(\Leftarrow)$ Supongamos que $\Sigma\cup \{\neg \varphi\}$ es inconsistente, demostraremos que $\Sigma \models \varphi$.
+Sea $\sigma$ una valuaci\'on tal que $\sigma(\Sigma)=1$, debemos demostrar que $\sigma(\varphi)=1$.
+Dado que $\Sigma\cup \{\neg \varphi\}$ es inconsistente, y $\sigma$ es una valuaci\'on tal que $\sigma(\Sigma)=1$, 
+necesariamente se tiene que $\sigma(\neg \varphi)=0$, de lo que concluimos que $\sigma(\varphi)=1$.
+Hemos demostrado que, si $\sigma$ es tal que $\sigma(\Sigma)=1$, 
+entonces $\sigma(\varphi)=1$, lo que implica que $\Sigma\models \varphi$.
+\end{demostracion}
+\end{teorema}
+
+Entonces para chequear que $\Sigma\models \varphi$, basta con chequear que $\Sigma\cup \{\neg \varphi\}$ es inconsistente.
+>C\'omo chequeamos que un conjunto de f\'ormulas es inconsistente?
+
+
+La primera observaci\'on es que podemos extender la idea de equivalencia a conjuntos de f\'ormulas.
+Dos conjuntos $\Sigma_1$ y $\Sigma_2$ son l\'ogicamente equivalentes (y escribimos $\Sigma_1\equiv \Sigma_2$),
+si para toda valuaci\'on $\sigma$ se tiene que $\sigma(\Sigma_1)=\sigma(\Sigma_2)$.
+Similarmente diremos que $\Sigma$ es l\'ogicamente equivalente a la f\'ormula $\varphi$, si
+$\Sigma\equiv \{\varphi\}$.
+
+La segunda observaci\'on es que, todo conjunto $\Sigma$ es equivalente a la conjunci\'on de sus f\'ormulas
+\[
+\Sigma \equiv \bigwedge_{\varphi \in \Sigma}\varphi.
+\]
+Adem\'as sabemos que toda f\'ormula es equivalente a una en FNC de la forma $C_1\wedge C_2\wedge \cdots \wedge C_n$,
+donde cada $C_i$ es un cl\'ausula.
+Por otra parte, una f\'ormula en FNC es l\'ogicamente equivalente al conjunto de sus cl\'ausulas.
+De toda esta discusi\'on obtenemos que todo conjunto de f\'ormulas es l\'ogicamente equivalente a un
+conjunto de cl\'ausulas.
+Para obtener el conjunto de cl\'ausulas correspondiente, primero llevamos la conjunci\'on de
+f\'ormulas del primer conjunto a una f\'ormula equivalente en FNC, y luego creamos el conjunto
+de todas las cl\'ausulas obtenidas.
+
+\begin{ejemplo}
+$\{p,\ q\to (p\to r),\ \neg(q\to r)\} \equiv \{p,\ \neg q\vee \neg p\vee r,\ q,\ \neg r\}$
+\end{ejemplo}
+
+Queremos un m\'etodo para chequear cuando un conjunto de cl\'ausulas $\Sigma$ es inconsistente.
+Sea $\varphi$ una f\'ormula que representa una contradicci\'on (por ejemplo $p\wedge \neg p$).
+Vamos a introducir un nuevo s\'{i}mbolo $\square$, para representar una f\'ormula gen\'erica que es contradicci\'on.
+O sea, $\square$ es una f\'ormula tal que para toda valuaci\'on se tiene que $\sigma(\square)=0$.
+Llamamos a $\square$ la {\em cl\'ausula vac\'{i}a}.
+No es dificil demostrar (h\'agalo de ejercicio) que $\Sigma$ es inconsistente si y solo si
+$\Sigma\models \square$.
+
+Lo que veremos es un m\'etodo, llamado m\'etodo de resoluci\'on, que usa un sistema de reglas 
+para, dado un conjunto de cl\'ausulas $\Sigma$ determinar si $\Sigma\models \square$ y por lo tanto, 
+determinar si $\Sigma$ es inconsistente. Primero introduciremos un poco de notaci\'on.
+Sea $\ell$ un literal, si $\ell$ es igual a una variable proposicional $p$, entonces $\bar{\ell}$
+representa a $\neg p$. Similarmente, si $\ell=\neg p$ entonces $\bar{\ell}=p$.
+La regla que est\'a en el coraz\'on del m\'etodo, se llama {\em Regla de Resoluci\'on} y 
+tiene la siguiente forma:
+\[
+\begin{array}{c}
+C_1 \vee \ell \vee C_2 \\
+C_3 \vee \bar{\ell} \vee C_4 \\ \hline
+C_1 \vee C_2 \vee C_3 \vee C_4 
+\end{array}
+\]
+con $C_1$, $C_2$, $C_3$, $C_4$ cl\'ausulas y $\ell$ un literal.
+Esta es una regla {\bf sint\'actica}, que genera un nuevo objeto dados dos objetos
+anteriores.
+La idea es que si tengo dos cl\'ausulas tales que, en una aparece un literal $\ell$ y en la otra aparece la
+negaci\'on $\bar{\ell}$ de ese literal, entonces genero una nueva cl\'ausula como la disyunci\'on de ambas
+sin considerar $\ell$ ni $\bar{\ell}$.
+Sem\'anticamente, esta regla es {\em correcta}, de hecho es f\'acil ver que (demu\'estrelo)
+\[
+\{ C_1 \vee \ell \vee C_2,\ 
+C_3 \vee \bar{\ell} \vee C_4\} \models 
+C_1 \vee C_2 \vee C_3 \vee C_4 
+\]
+Algunos casos particulares de la regla de resoluci\'on son los siguientes:
+\[
+\begin{array}{c}
+C_1 \vee \ell \vee C_2 \\
+\bar{\ell} \\ \hline
+C_1 \vee C_2 
+\end{array}
+\;\;\;\;\;\;\;\;
+\;\;\;\;\;\;\;\;
+\begin{array}{c}
+\ell \\
+\bar{\ell} \\ \hline
+\square 
+\end{array}
+\]
+\begin{ejemplo}
+Un ejemplo de aplicaci\'on de la regla de resoluci\'on
+\[
+\begin{array}{c}
+\neg p \vee q \\
+\neg q \vee r \vee s \\ \hline
+\neg p \vee r \vee s
+\end{array}
+\]
+Entonces podemos concluir que $\{\neg p \vee q,\ \neg q \vee r \vee s\}\models \neg p \vee r \vee s$.
+\end{ejemplo}
+
+Adicionalmente necesitamos la regla de factorizaci\'on, que esencialmente dice
+que si un literal se repite en una cl\'ausula, entonces se puede eliminar una de las repeticiones:
+\[
+\begin{array}{c}
+C_1 \vee \ell \vee C_2 \vee \ell \vee C_3 \\ \hline
+C_1 \vee \ell \vee C_2 \vee C_3
+\end{array}
+\]
+\begin{definicion}
+Dado un conjunto $\Sigma$ de cl\'ausulas, una demostraci\'on por resoluci\'on de que $\Sigma$
+es inconsistente es una secuencia de cl\'ausulas $C_1,C_2,\ldots,C_n$ tal que
+$C_n=\square$ y para cada $i=1,\ldots, n$ se tiene que:
+\begin{itemize}
+\item $C_i\in \Sigma$, o
+\item $C_i$ se obtiene de dos cl\'ausulas anteriores en la secuencia usando la regla de resoluci\'on, o
+\item $C_i$ se obtiene de una cl\'asula anterior en la secuencia usando la regla de factorizaci\'on.
+\end{itemize}
+Si existe tal demostraci\'on, escribimos $\Sigma\vdash \square$.
+\end{definicion}
+
+\begin{ejemplo}
+La siguiente es una demostraci\'on por resoluci\'on de que el conjunto 
+\[
+\Sigma=\{p\vee q\vee r,\ \neg p \vee s,\ \neg q\vee s,\ \neg r\vee s, \neg s\}
+\]
+es inconsistente.
+\[
+\begin{array}{cll}
+(1) & p\vee q\vee r & \text{est\'a en }\Sigma \\
+(2) & \neg p\vee s & \text{est\'a en }\Sigma\\
+(3) & s\vee q\vee r & \text{resoluci\'on (1) y (2)} \\
+(4) & \neg q \vee s & \text{est\'a en }\Sigma \\
+(5) & s \vee s \vee r & \text{resoluci\'on (3) y (4)}\\
+(6) & s \vee r & \text{factorizaci\'on (5)} \\
+(7) & \neg r \vee s & \text{est\'a en }\Sigma \\
+(8) & s \vee s & \text{resoluci\'on (6) y (7)} \\
+(9) & s & \text{factorizaci\'on (8)} \\
+(10) & \neg s & \text{est\'a en }\Sigma \\
+(11) & \square & \text{resoluci\'on (9) y (10)}
+\end{array}
+\]
+\end{ejemplo}
+
+\begin{teorema}
+Dado un conjunto de cl\'ausulas $\Sigma$ se tiene que:
+\begin{description}
+\item[(Correctitud)] Si $\Sigma\vdash \square$ entonces $\Sigma$ es inconsistente.
+\item[(Completitud)] Si $\Sigma$ es inconsistente entonces $\Sigma\vdash \square$. 
+\end{description}
+\end{teorema}
+
+\begin{ejemplo}
+Usaremos resoluci\'on para demostrar que 
+$\{p,\ q\to(p\to r)\} \models q\to r$.
+Primero, sabemos que $\{p,\ q\to(p\to r)\} \models q\to r$, si y s\'olo si el conjunto 
+$\{p,\ q\to(p\to r),\ \neg(q\to r)\}$
+es inconsistente.
+Conviertiendo cada f\'ormula en FNC, notamos que este \'ultimo conjunto de f\'ormulas es l\'ogicamente equivalente al conjunto de cl\'ausulas
+\[
+\Sigma= \{p,\ \neg q\vee \neg p\vee r,\ q,\ \neg r\}.
+\]
+Basta entonces demostrar que $\Sigma$ es inconsistente, o equivalentemente que $\Sigma\vdash \square$.
+La siguiente es una demostraci\'on de esto \'ultimo:
+\[
+\begin{array}{cll}
+(1) & p & \text{est\'a en }\Sigma \\
+(2) & \neg q\vee \neg p\vee r & \text{est\'a en }\Sigma\\
+(3) & \neg q \vee r & \text{resoluci\'on (1) y (2)} \\
+(4) & q & \text{est\'a en }\Sigma \\
+(5) & r & \text{resoluci\'on (3) y (4)}\\
+(6) & \neg r & \text{est\'a en }\Sigma \\
+(7) & \square & \text{resoluci\'on (5) y (6).}
+\end{array}
+\]
+\end{ejemplo}

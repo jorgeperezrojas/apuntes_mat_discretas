@@ -1,0 +1,155 @@
+\subsection*{Teorema de Cantor-Bernstein-Shr\"oder}
+
+Terminaremos esta sección demostrando el Teorema de Cantor-Bernstein-Shr\"oder.
+
+{\bf Teorema}\; 
+Sean $A$ y $B$ conjuntos tales que existen funciones inyectivas $f:A\to B$ y $g:B\to A$.
+Entonces $|A|=|B|$.
+\bigskip
+
+{\it Demostración:}
+Primero daremos la idea de la demostración. 
+Supongamos que tomamos un $a\in A$ cualquiera y aplicamos iterativamente $f$ y $g$ (y $f^{-1}$ y $g^{-1})$.
+Entonces tenemos cuatro posibilidades para los conjuntos de elementos que se obtienen, cada una detallada
+en los siguientes diagramas, con $a$ indicado por un punto azul (sobre cada punto está indicado además el
+conjunto al que pertenece):
+
+\begin{itemize}
+\item[(I)] 
+$
+\stackrel{{A}}{\blue{\bullet}}\stackrel{f}{\longrightarrow}\stackrel{B}{\bullet}\stackrel{g}{\longrightarrow}
+\stackrel{A}{\bullet}\stackrel{f}{\longrightarrow}
+\stackrel{B}{\bullet}\stackrel{g}{\longrightarrow}\stackrel{A}{\bullet} \; \cdots\cdots \; \stackrel{B}{\bullet}\stackrel{g}{\longrightarrow}
+\stackrel{{A}}{\blue{\bullet}}
+$ \hfill (Cíclica)
+\item[(II)] 
+$
+\;\cdots\cdots\; \stackrel{{A}}{{\bullet}}\stackrel{f}{\longrightarrow}\stackrel{B}{\bullet}\stackrel{g}{\longrightarrow}
+\stackrel{A}{\blue{\bullet}}\stackrel{f}{\longrightarrow}
+\stackrel{B}{\bullet}\stackrel{g}{\longrightarrow}\stackrel{A}{{\bullet}}\stackrel{f}{\longrightarrow}
+\stackrel{B}{\bullet} \; \cdots\cdots \;
+$
+\hfill (Infinita)
+\item[(III)] 
+$
+\stackrel{B}{\bullet}\stackrel{g}{\longrightarrow}\stackrel{A}{{\bullet}}\stackrel{f}{\longrightarrow}\stackrel{B}{\bullet} 
+\;\cdots\cdots\; \stackrel{{A}}{{\bullet}}\stackrel{f}{\longrightarrow}\stackrel{B}{\bullet}\stackrel{g}{\longrightarrow}
+\stackrel{A}{\blue{\bullet}}\stackrel{f}{\longrightarrow}
+\stackrel{B}{\bullet}\stackrel{g}{\longrightarrow}\stackrel{A}{{\bullet}} \; \cdots\cdots \;
+$
+\hfill (Inicio en $B$)
+\item[(IV)] 
+$
+\stackrel{A}{\bullet}\stackrel{f}{\longrightarrow}\stackrel{B}{{\bullet}}\stackrel{g}{\longrightarrow}\stackrel{B}{\bullet} 
+\;\cdots\cdots\; \stackrel{{A}}{{\bullet}}\stackrel{f}{\longrightarrow}\stackrel{B}{\bullet}\stackrel{g}{\longrightarrow}
+\stackrel{A}{\blue{\bullet}}\stackrel{f}{\longrightarrow}
+\stackrel{B}{\bullet}\stackrel{g}{\longrightarrow}\stackrel{A}{{\bullet}} \; \cdots\cdots \;
+$
+\hfill (Inicio en $A$)
+\end{itemize}
+Los cuatro tipos de componentes representan distintas opciones para los elementos de $A$.
+En la componente del tipo (I), iniciando con un elemento de $a$ y aplicando $f\comp g$ repetidamente, llegamos en algún momento
+a $a$ nuevamente. Este tipo de componente se llama \emph{cíclica}.
+En la componente del tipo (II), iniciando con $a$ podemos aplicar indefinidamente $f\comp g$ \emph{a la derecha} y $g^{-1}\comp f^{-1}$
+a la izquierda y siempre encontramos nuevos elementos.
+Este tipo se llama \emph{infinita}.
+Para el tipo (III), iniciando con $a$ podemos aplicar indefinidamente $f\comp g$ {a la derecha} pero aplicando $g^{-1}$ seguido de
+$f^{-1}$ hacia la izquierda, eventualmente llegamos a un punto de $B$ que no tiene preimagen en $A$ según $f$. Este tipo de componente
+se dice que \emph{inicia en $B$}.
+Finalmente para el tipo (IV), iniciando con $a$ podemos aplicar indefinidamente $f\comp g$ {a la derecha} pero aplicando $g^{-1}$ seguido de
+$f^{-1}$ hacia la izquierda, eventualmente llegamos a un punto de $A$ que no tiene preimagen en $B$ según $g$. Este tipo de componente
+se dice que \emph{inicia en $A$}.
+
+Por las propiedades de inyectividad de $g$ y $f$ no es difícil argumentar que los tipos descritos arriba son los 
+únicos posibles sin importar el elemento de $A$ desde donde se comience.
+Mas aún, cada elemento de $A$ pertenece a una única componente.
+La propiedad crucial es que podemos seguir el mismo método partiendo desde los elementos de $B$ y por lo tanto, todo elemento
+de $B$ pertenece también a una única componente de alguno de los tipos descritos arriba.
+
+Con estas observaciones no es difícil definir una biyección $h:A\to B$ como:
+\[
+h(x) = \left\{ \begin{array}{ll}
+f(x) & \text{si }x\text{ está en una componente del tipo (IV)} \\
+g^{-1}(x) & \text{si }x\text{ está en una componente del tipo (I), (II) o (III)} 
+\end{array} \right.
+\]
+
+Los diagramas arriba aseguran que $h$ debe funcionar como biyección entre $A$ y $B$.
+
+Ahora formalizaremos el anterior argumento. Para esto, lo primero que definiremos es el conjunto $\mathcal C$ de todos
+los elementos de $A$ que están en componentes del tipo (IV). La definición será inductiva:
+Inicialmente incluiremos en el conjunto todos los elementos de $A$ que no tienen preimagen en $B$.
+Luego las imágenes del anterior conjunto vía la función $f\comp g$, y así sucesivamente.
+Formalmente definimos:
+\begin{eqnarray*}
+C_0 & = & \{x\in A\mid \text{no existe }y\in B\text{ tal que }g(y)=x\} \\
+C_{n+1} & = & \{x\in A\mid x=g(f(x'))\text{ para algún }x'\in C_n\}
+\end{eqnarray*}
+
+\newcommand{\CC}{\mathcal{C}}
+Luego el conjunto de todos los elementos de $A$ que están en una componente del tipo (IV) es simplemente
+\[
+\CC \; = \; \bigcup_{n=0}^\infty C_n
+\]
+Siguiendo la misma idea intuitiva de arriba, definimos $h:A\to B$ como
+\[
+h(x) = \left\{ \begin{array}{ll}
+f(x) & \text{si }x\in \CC \\
+g^{-1}(x) & \text{si }x\notin \CC
+\end{array} \right.
+\]
+Demostraremos que $h$ es una función biyectiva. Para esto primero debemos
+argumentar que $h$ está bien definida.
+Note que $h$ está definida sobre conjuntos complementarios ($\CC$ y $A\smallsetminus \CC$), entonces
+sólo basta probar que $g^{-1}$ está bien definida para todo elemento $x\notin \CC$.
+Sea $x\notin \CC$. Entonces, en particular, $x\notin C_0$ y por lo tanto, por la definición de $C_0$,
+sabemos que existe un $y\in B$ tal que $g(y)=x$. Luego dado que $g$ es inyectiva obtenemos que
+$g^{-1}(x)=y$ lo que completa la demostración de que $h$ está bien definida como función.
+
+Probaremos ahora que $h$ es inyectiva. Para esto suponga que $h(x_1)=h(x_2)$. 
+Debemos demostrar que $x_1=x_2$. Razonaremos por casos:
+\begin{itemize}
+\item Si $x_1,x_2\in \CC$: entonces tenemos que $h(x_1)=f(x_1)$ y $h(x_2)=f(x_2)$ y por lo tanto $f(x_1)=f(x_2)$
+de donde concluimos que $x_1=x_2$.
+\item Si $x_1,x_2\notin \CC$: entonces tenemos que $h(x_1)=g^{-1}(x_1)$ y $h(x_2)=g^{-1}(x_2)$ 
+y por lo tanto $g^{-1}(x_1)=g^{-1}(x_2)$ de donde aplicando $g$ en ambos lados de la igualdad,
+concluimos que $x_1=x_2$.
+\item El último caso es $x_1\in \CC$, $x_2\notin\CC$ y $h(x_1)=h(x_2)$:
+demostraremos que este caso no puede ocurrir.
+Para obtener una contradicción, suponga que $x_1\in \CC$, $x_2\notin\CC$ y $h(x_1)=h(x_2)$.
+Entonces $h(x_1)=f(x_1)$ y $h(x_2)=g^{-1}(x_2)$. Luego, dado que $h(x_1)=h(x_2)$, tenemos que
+$f(x_1)=g^{-1}(x_2)$ y aplicando $g$ nos queda $g(f(x_1))=x_2$.
+Note que dado que $x_1\in \CC$ entonces $g(f(x_1))\in \CC$ lo que implica que $x_2\in \CC$ obteniendo
+la contradicción buscada (ya que supusimos que $x_2\notin \CC$).
+\end{itemize}
+
+Sólo nos falta probar que $h$ es sobreyectiva. Para esto considere un elemento arbitrario $b\in B$.
+Debemos demostrar que existe un $a\in A$ tal que $h(a)=b$.
+Haremos la demostración por casos:
+\begin{itemize}
+\item Supongamos primero que existe un $a\in \CC$ tal que $b=f(a)$. Entonces por definición
+$h(a)=f(a)$ y por lo tanto $h(a)=b$.
+\item Supongamos ahora que no exists un $a\in \CC$ tal que $b=f(a)$. Consideremos el 
+elemento $a'=g(b)$. Demostraremos primero que $a'\notin \CC$. Para esto demostraremos que
+$a'\notin C_n$ para todo $n\in \N$. Primero, es claro por la definición de $C_0$ que $a'\notin C_0$.
+Para obtener una contradicción, suponga que $a'\in C_{n+1}$.
+Por definición de $C_{n+1}$ tenemos que existe un $a''\in C_n$ tal que
+$a'=g(f(a''))$. Por otro lado, sabemos que $a'=g(b)$, luego, $g(b)=g(f(a''))$ y por lo tanto
+$b=f(a'')$ dado que $g$ es inyectiva. Finalmente, dado que $a''\in C_n$, tenemos que
+$a''\in \CC$ y que además $b=f(a'')$ lo que es una contradicción dado que hemos supuesto
+que no existe un $a\in \CC$ tal que $b=f(a)$.
+
+Hemos demostrado que $a'=g(b)\notin \CC$ luego $h(a')=g^{-1}(a')=g^{-1}(g(b))=b$. Por lo tanto
+concluimos que existe un elemento $a'\in A$ tal que $h(a')=b$ que es lo que debíamos demostrar.
+\end{itemize}
+
+Hemos demostrado que $h:A\to B$ es inyectiva y sobreyectiva, luego es una biyección y por lo tanto
+$|A|=|B|$.
+Esto completa la demostración del Teorema de Cantor-Bernstein-Shr\"oder.
+
+
+
+
+
+
+

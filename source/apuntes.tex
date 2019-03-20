@@ -1,0 +1,203 @@
+\documentclass[letter]{report}
+\usepackage[utf8]{inputenc}
+%\usepackage[applemac]{inputenc}
+\usepackage[dvips]{graphics}
+\usepackage[spanish]{babel}
+\usepackage{fullpage}
+\usepackage{euscript}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{epsfig}
+\usepackage{multicol}
+\usepackage{clrscode}
+\usepackage{ntheorem}
+\usepackage{color}
+
+\newcommand{\red}[1]{\textcolor{red}{#1}}
+\newcommand{\blue}[1]{\textcolor{blue}{#1}}
+\newcommand{\comp}{\circ}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%% Algunos comandos para códigos %%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\renewcommand{\gets}{ERROR!!! }
+\newcommand{\cgets}{:=}%\leftarrow}
+\newcommand{\ceq}{=}
+\newcommand{\cneg}{\neg}
+\newcommand{\cnot}{\not}
+\newcommand{\cneq}{\not=}
+\newcommand{\clt}{<}
+\newcommand{\cgt}{>}
+\newcommand{\cleq}{\leq}
+\newcommand{\cgeq}{\geq}
+\newcommand{\cor}{\vee}
+\newcommand{\cand}{\wedge}
+\newcommand{\nil}{\const{nil} }
+\renewcommand{\Do}{\bf do }
+\renewcommand{\Then}{\bf then }
+\renewcommand{\Else}{\bf else }
+\renewcommand{\If}{{\bf if} }
+\renewcommand{\While}{\bf while }
+
+%\renewcommand{\emptyset}{o\hspace*{-1.6mm}/}
+\renewcommand{\P}{\mathcal{P}}
+\newcommand{\A}{\mathcal{A}}
+\newcommand{\U}{\mathcal{U}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\G}{\mathcal{G}}
+\renewcommand{\L}{\mathcal{L}}
+\newcommand{\E}{\mathcal{E}}
+\newcommand{\nr}[1]{\hspace*{-0.3em}\not\hspace*{-0.3em}#1}
+\newcommand{\eqr}{\sim}
+\newcommand{\NP}{\emph{NP}}
+
+\newcommand{\ssi}{\leftrightarrow}
+
+\newcommand{\fin}{
+%\vspace*{0em}\\*
+\par\noindent
+\rule{4cm}{0.3mm}
+\par
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%% Definiciones de ambientes tipo teorema %%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcounter{teorema}[section]
+\renewcommand{\theteorema}{\thesection.\arabic{teorema}}
+\newenvironment{teorema}[1][]
+{\refstepcounter{teorema}{\bf Teorema \theteorema: #1}}
+{\fin}
+
+\newenvironment{lema}[1][]
+{\refstepcounter{teorema}{\bf Lema \theteorema: #1}}
+{\fin}
+
+\newenvironment{corolario}[1][]
+{\refstepcounter{teorema}{\bf Corolario \theteorema: #1}}
+{\fin}
+
+
+\newenvironment{nota}[1][]
+{}
+{}
+
+\newenvironment{definicion}[1][]
+{\begin{description}
+\vspace*{-\topsep}
+\item[Def: #1]
+}
+{
+\vspace*{-1.2\topsep}
+\end{description}}
+
+
+\newenvironment{ejemplo}[1][]
+{{\bf Ejemplo: #1}}
+{\fin}
+
+\newcommand{\BI}{\item[\bf B.I.]}
+\newcommand{\HI}{\item[\bf H.I.]}
+\newcommand{\TI}{\item[\bf T.I.]}
+
+\newenvironment{inducciondemo}
+{\begin{itemize}
+\vspace*{-\topsep}
+\itemsep 0pt
+\itemindent 10pt
+\labelwidth 20pt
+\labelsep 10pt
+}
+{\end{itemize}
+\vspace*{-\topsep}}
+
+\newenvironment{demostracion}
+{\emph{Demostración:}}
+{$\Box$}
+
+
+
+\parskip 5pt
+\parindent 0pt
+
+\begin{document}
+
+\title{\Huge\bf Apuntes de Matem\'aticas Discretas\footnote{Apuntes escritos mientras el autor dictaba los cursos de Modelos Discretos en la Universidad de Talca (2005--2006), Matemáticas Discretas en la Universidad Católica (2007--2010), y Matemáticas Discretas en la Universidad de Chile (2011--).
+Si quieres cooperar completando estros apuntes puedes hacerlo en \texttt{https://github.com/jorgeperezrojas/apuntes\_mat\_discretas}}}
+\author{\LARGE Jorge P\'erez \vspace*{1em} \\ Departamento de Ciencias de la Computaci\'on  \\ Universidad de Chile \\
+\vspace*{15em} \\ %\includegraphics{logo.ps}
+}
+\maketitle
+
+\pagestyle{empty}
+\thispagestyle{empty}
+\tableofcontents
+\chapter{Fundamentos de Matemáticas Discretas}
+\setcounter{chapter}{1}
+\thispagestyle{empty}
+
+\newpage
+\input{induccion}
+
+\newpage
+\input{logica-prop}
+
+\newpage
+\input{conjuntos}
+
+\newpage
+\input{relaciones}
+
+\newpage
+\input{logica-pred}
+
+\newpage
+\input{cardinalidad}
+\input{CBS}
+
+\newpage
+\input{numeros}
+
+\newpage
+\thispagestyle{empty}
+\setcounter{chapter}{1}
+\chapter{Introducción a la Teoría de Grafos}
+\thispagestyle{empty}
+
+\newpage
+\input{grafos}
+
+\input{caminos}
+
+\newpage
+\input{arboles}
+
+\newpage
+\input{topicos}
+
+
+\setcounter{chapter}{2}
+\newpage
+\thispagestyle{empty}
+\chapter{Algoritmos y Problemas Computacionales}
+\thispagestyle{empty}
+
+\newpage
+\input{algoritmos}
+
+\newpage
+\input{problemas}
+
+
+\end{document}
+
+
+
+
+
