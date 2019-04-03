@@ -1,0 +1,51 @@
+\babel@toc {spanish}{}
+\contentsline {chapter}{\numberline {1}Fundamentos de Matem\IeC {\'a}ticas Discretas}{3}% 
+\contentsline {section}{\numberline {1.1}Inducci\IeC {\'o}n}{4}% 
+\contentsline {subsection}{\numberline {1.1.1}Principios de Inducci\IeC {\'o}n}{4}% 
+\contentsline {subsection}{\numberline {1.1.2}Inducci\IeC {\'o}n Estructural}{8}% 
+\contentsline {section}{\numberline {1.2}L\'ogica Proposicional}{16}% 
+\contentsline {subsection}{\numberline {1.2.1}Sintaxis de la L\'ogica Proposicional}{16}% 
+\contentsline {subsection}{\numberline {1.2.2}Sem\'antica de la L\'ogica Proposicional}{16}% 
+\contentsline {subsection}{\numberline {1.2.3}Formas Normales}{19}% 
+\contentsline {subsection}{\numberline {1.2.4}Consecuencia L\'ogica}{19}% 
+\contentsline {section}{\numberline {1.3}Teor\IeC {\'\i }a de Conjuntos}{23}% 
+\contentsline {subsubsection}{Operaciones Generalizadas}{28}% 
+\contentsline {section}{\numberline {1.4}Relaciones}{31}% 
+\contentsline {subsection}{\numberline {1.4.1}Propiedades de las Relaciones Binarias}{33}% 
+\contentsline {subsection}{\numberline {1.4.2}Representaci\IeC {\'o}n Matricial}{34}% 
+\contentsline {subsection}{\numberline {1.4.3}Clausuras}{37}% 
+\contentsline {subsection}{\numberline {1.4.4}Relaciones de Orden}{40}% 
+\contentsline {subsection}{\numberline {1.4.5}Relaciones de Equivalencia y Particiones}{44}% 
+\contentsline {section}{\numberline {1.5}L\IeC {\'o}gica de Predicados de Primer \IeC {\'O}rden***}{49}% 
+\contentsline {section}{\numberline {1.6}Funciones y Cardinalidad}{50}% 
+\contentsline {subsection}{\numberline {1.6.1}Funciones}{50}% 
+\contentsline {subsection}{\numberline {1.6.2}Cardinalidad}{52}% 
+\contentsline {section}{\numberline {1.7}Introducci\IeC {\'o}n a la Teor\IeC {\'\i }a de N\IeC {\'u}meros**}{62}% 
+\contentsline {chapter}{\numberline {2}Introducci\IeC {\'o}n a la Teor\IeC {\'\i }a de Grafos}{63}% 
+\contentsline {section}{\numberline {2.1}Conceptos Fundamentales de Grafos}{64}% 
+\contentsline {subsection}{\numberline {2.1.1}Isomorfismos y Clases de Grafos}{66}% 
+\contentsline {subsection}{\numberline {2.1.2}Algunas Clases de Grafos}{68}% 
+\contentsline {subsection}{\numberline {2.1.3}Representaci\IeC {\'o}n Matricial}{72}% 
+\contentsline {section}{\numberline {2.2}Caminos y Ciclos}{76}% 
+\contentsline {subsection}{\numberline {2.2.1}Conectividad}{78}% 
+\contentsline {subsection}{\numberline {2.2.2}Grafos Bipartitos}{80}% 
+\contentsline {subsection}{\numberline {2.2.3}Ciclos y Caminos Eulerianos}{81}% 
+\contentsline {subsection}{\numberline {2.2.4}Ciclos Hamiltonianos}{86}% 
+\contentsline {section}{\numberline {2.3}\IeC {\'A}rboles y Grafos en Computaci\IeC {\'o}n}{88}% 
+\contentsline {subsection}{\numberline {2.3.1}\IeC {\'A}rboles}{88}% 
+\contentsline {subsection}{\numberline {2.3.2}\IeC {\'A}rboles en Computaci\IeC {\'o}n}{92}% 
+\contentsline {subsection}{\numberline {2.3.3}Grafos en Computaci\IeC {\'o}n}{95}% 
+\contentsline {section}{\numberline {2.4}T\IeC {\'o}picos Avanzados en Grafos**}{97}% 
+\contentsline {subsection}{\numberline {2.4.1}Emparejamiento y Cubrimiento}{97}% 
+\contentsline {subsection}{\numberline {2.4.2}$k$--Conectividad}{97}% 
+\contentsline {subsection}{\numberline {2.4.3}Planaridad}{97}% 
+\contentsline {subsection}{\numberline {2.4.4}Grafos Infinitos}{97}% 
+\contentsline {chapter}{\numberline {3}Algoritmos y Problemas Computacionales}{98}% 
+\contentsline {section}{\numberline {3.1}Algoritmos}{99}% 
+\contentsline {subsection}{\numberline {3.1.1}Correcci\IeC {\'o}n de Algoritmos}{100}% 
+\contentsline {subsection}{\numberline {3.1.2}Notaci\IeC {\'o}n Asint\IeC {\'o}tica}{104}% 
+\contentsline {subsection}{\numberline {3.1.3}Complejidad de Algoritmos Iterativos}{107}% 
+\contentsline {subsection}{\numberline {3.1.4}Relaciones de Recurrencia y Complejidad de Algoritmos Recursivos}{111}% 
+\contentsline {section}{\numberline {3.2}Problemas Computacionales}{112}% 
+\contentsline {subsection}{\numberline {3.2.1}Problemas de Decisi\IeC {\'o}n y la Clase \emph {P}}{112}% 
+\contentsline {subsection}{\numberline {3.2.2}La Clase $\emph {NP}$ y Problemas $\emph {NP}$-completos}{116}% 

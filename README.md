@@ -10,6 +10,6 @@ Adicionalmente trataré de subir las guías de ejercicios de cada sección así 
 ## Cosas por hacer
 
 - obviamente, completar las partes que faltan
-- cambiar las referencias a las imágenes porque actualmente están en un directorio y hay que moverlas para poder compilar (tal vez ordenarlas por capítulo o sección?)
+- agregar las imágenes faltantes en la sección de árboles del capítulo de grafos
 - agregar las guías como ejercicios al final de cada sección
 

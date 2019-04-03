@@ -11,7 +11,7 @@ Un diagrama simplificado de la ciudad puede verse en la figura~\ref{fig:konigsbe
 
 \begin{figure}[h!]
 \centering
-\includegraphics[height=150pt]{konigsberg}
+\includegraphics[height=150pt]{eps_imgs/konigsberg}
 \caption{Diagrama de la ciudad de K\"onigsberg.}
 \label{fig:konigsberg}
 \end{figure}
@@ -23,7 +23,7 @@ El problema puede reducirse entonces al de dibujar la figura~\ref{fig:graph1} si
 
 \begin{figure}[h!]
 \centering
-\includegraphics[height=150pt]{graph1}
+\includegraphics[height=150pt]{eps_imgs/graph1}
 \caption{Representación simplificada de la ciudad de K\"onigsberg.}
 \label{fig:graph1}
 \end{figure}
@@ -48,7 +48,7 @@ La figura~\ref{fig:graph2} tampoco se puede dibujar sin repetir trazos y volvien
 
 \begin{figure}[h!]
 \centering
-\includegraphics[height=150pt]{graph2}
+\includegraphics[height=150pt]{eps_imgs/graph2}
 \caption{Figura que tampoco se puede dibujar cumpliendo las reglas.}
 \label{fig:graph2}
 \end{figure}
@@ -81,7 +81,7 @@ Nuestra definición de grafo también permite por ejemplo que una arista esté r
 En la figura~\ref{fig:graph3} se muestra un grafo con aristas de este tipo.
 \begin{figure}[h!]
 \centering
-\includegraphics{graph3}
+\includegraphics{eps_imgs/graph3}
 \caption{Grafo con rulos y aristas paralelas.}
 \label{fig:graph3}
 \end{figure}
@@ -119,7 +119,7 @@ Por ejemplo, >cuál es la diferencia entre los dos grafos de la figura~\ref{fig:
 \begin{figure}[t!]
 \centering
 \begin{tabular}{cc}
-\includegraphics{graph5}\hspace*{3em} & \hspace*{3em}\includegraphics{graph4} \\
+\includegraphics{eps_imgs/graph5}\hspace*{3em} & \hspace*{3em}\includegraphics{eps_imgs/graph4} \\
 $G_1$ \hspace*{3em} & \hspace*{3em} $G_2$
 \end{tabular}
 \caption{>Cuál es la diferencia entre $G_1$ y $G_2$?}
@@ -132,7 +132,7 @@ La respuesta es sí.
 En la figura~\ref{fig:transform} se muestra como se pueden ``mover'' los vértices de $G_1$ de manera que se ``vea'' igual a $G_2$.
 \begin{figure}[t!]
 \centering
-\includegraphics{graph8}\\
+\includegraphics{eps_imgs/graph8}\\
 \caption{Transformación de $G_1$.}
 \label{fig:transform}
 \end{figure}
@@ -202,7 +202,7 @@ Un {\bf ciclo} es un grafo simple cuyos vértices pueden disponerse \emph{en cí
 Un ejemplo de camino y ciclo se muestra en la figura~\ref{fig:graph9}
 \begin{figure}[h!]
 \centering
-\includegraphics[height=85pt]{graph9}\\
+\includegraphics[height=85pt]{eps_imgs/graph9}\\
 \caption{Un camino (izquierda) y un ciclo (derecha).}
 \label{fig:graph9}
 \end{figure}
@@ -216,7 +216,7 @@ Siguiendo esta norma, en la figura~\ref{fig:paths} aparecen $P_4$ y $P_6$.
 \begin{figure}[h!]
 \centering
 \begin{tabular}{cc}
-\includegraphics{p4}\hspace*{3em} &  \includegraphics{p6} \\
+\includegraphics{eps_imgs/p4}\hspace*{3em} &  \includegraphics{eps_imgs/p6} \\
 $P_4$\hspace*{3em} & $P_6$
 \end{tabular}
 \caption{Clases de equivalencia para el camino de 4 y 6 vértices.}
@@ -226,7 +226,7 @@ En ella $P_4$ y $P_6$ se han dibujado a propósito en una disposición no lineal
 En la figura~\ref{fig:cycle} aparece $C_6$.
 \begin{figure}[h!]
 \centering
-\includegraphics{c6}\\
+\includegraphics{eps_imgs/c6}\\
 $C_6$
 \caption{Ejemplo del ciclo con 6 vértices.}
 \label{fig:cycle}
@@ -242,8 +242,12 @@ En la figura~\ref{fig:cliques} se pueden ver a los grafos $K_n$ para $n=1,2,3,4,
 \begin{figure}[h!]
 \centering
 \begin{tabular}{ccccc}
-\includegraphics{k1}&\includegraphics{k2}&\includegraphics{k3}&\includegraphics{k4}&\includegraphics{k5}\\
-$K_1$ & $K_2$ & $K_3$ & $K_4$ & $K_5$
+	\includegraphics{eps_imgs/k1} &
+	\includegraphics{eps_imgs/k2} &
+	\includegraphics{eps_imgs/k3} &
+	\includegraphics{eps_imgs/k4} &
+	\includegraphics{eps_imgs/k5}\\
+	$K_1$ & $K_2$ & $K_3$ & $K_4$ & $K_5$
 \end{tabular}
 \caption{Grafos completos.}
 \label{fig:cliques}
@@ -256,7 +260,7 @@ Esto quiere decir que dos vértices de $V_1$ no pueden ser adyacentes, lo mismo 
 \end{definicion}
 \begin{figure}[h!]
 \centering
-\includegraphics{graph10}\\
+\includegraphics{eps_imgs/graph10}\\
 $G$
 \caption{Ejemplo de un grafo bipartito}
 \label{fig:graph10}
@@ -269,7 +273,7 @@ En general, cuando dibujemos un grafo bipartito haremos una clara separación en
 En la figura~\ref{fig:graph11} se ha seguido esta norma para dibujar nuevamente a $G$.
 \begin{figure}[h!]
 \centering
-\includegraphics{graph11}\\
+\includegraphics{eps_imgs/graph11}\\
 $G$
 \caption{El mismo grafo bipartito haciendo una clara diferencia en las particiones.}
 \label{fig:graph11}
@@ -284,7 +288,7 @@ Un ejemplo se ve en la figura~\ref{fig:job-ass}.
 Una pregunta que se puede hacer sobre este tipo de grafos es si existe alguna forma de asignar las tareas de manera tal que toda puedan ser realizadas simultáneamente.
 \begin{figure}[h!]
 \centering
-\includegraphics{graph12}
+\includegraphics{eps_imgs/graph12}
 \caption{Un grafo para modelar un problema de asignación de tareas.}
 \label{fig:job-ass}
 \end{figure} 
@@ -298,7 +302,7 @@ Cuando las particiones tengan $n$ y $m$ vértices, llamaremos $K_{n,m}$ al grafo
 En la figura~\ref{fig:k2-3} se muestra un diagrama para $K_{2,3}$.
 \begin{figure}[h!]
 \centering
-\includegraphics{k2-3}\\
+\includegraphics{eps_imgs/k2-3}\\
 $K_{2,3}$
 \caption{El grafo bipartito completo cuyas particiones tienen tamaño 2 y 3.}
 \label{fig:k2-3}
@@ -352,13 +356,13 @@ En ella podemos ver que por ejemplo $P_4$ es autocomplementario, que $P_5$ no es
 \begin{figure}[h!]
 \centering
 \begin{tabular}{cc}
-\includegraphics{p4-2}\hspace*{3em} &  \includegraphics{p4-2c} \\
+\includegraphics{eps_imgs/p4-2}\hspace*{3em} &  \includegraphics{eps_imgs/p4-2c} \\
 $P_4$\hspace*{3em} & $\overline{P_4}$ \\
 & \\
-\includegraphics{p5}\hspace*{3em} &  \includegraphics{p5c} \\
+\includegraphics{eps_imgs/p5}\hspace*{3em} &  \includegraphics{eps_imgs/p5c} \\
 $P_5$\hspace*{3em} & $\overline{P_5}$ \\
 & \\
-\includegraphics{k4}\hspace*{3em} &  \includegraphics{k4c} \\
+\includegraphics{eps_imgs/k4}\hspace*{3em} &  \includegraphics{eps_imgs/k4c} \\
 $K_4$\hspace*{3em} & $\overline{K_4}$
 \end{tabular}
 \caption{Algunos grafos y sus complementos}
@@ -377,7 +381,7 @@ En la figura~\ref{fig:clique-indep} se muestra un posible grafo de $6$ vértices
 \begin{figure}[h!]
 \centering
 \begin{tabular}{cc}
-\includegraphics{graph13}\hspace*{3em} &  \includegraphics{graph14} \\
+\includegraphics{eps_imgs/graph13}\hspace*{3em} &  \includegraphics{eps_imgs/graph14} \\
 $G$\hspace*{3em} & $\overline G$
 \end{tabular}
 \caption{Conocidos mutuos y desconocidos mutuos}
@@ -394,7 +398,7 @@ Dado que estamos suponiendo que $G$ no tiene un clique de tamaño 3, entonces ne
 Si por el contrario resulta que el vértice particular $p_i$ en el que nos estamos enfocando tiene menos de tres vecinos en $G$, necesariamente este tiene una cantidad de vecinos mayor o igual a 3 en $\overline G$ y podemos usar exactamente el mismo argumento partiendo de $\overline G$ y contradiciendo la suposición de que $G$ no tiene un clique de tamaño 3.
 \begin{figure}[h!]
 \centering
-\includegraphics{graph15}
+\includegraphics{eps_imgs/graph15}
 \caption{Conocidos y desconocidos mutuos.}
 \label{fig:graph15}
 \end{figure}
@@ -511,7 +515,7 @@ Si $G$ tiene $n$ vértices y $m$ aristas, entonces su matriz de incidencia será
 Para el grafo de la figura~\ref{fig:graph16} la matriz de incidencia asociada será
 \begin{figure}
 \centering
-\includegraphics{graph16}
+\includegraphics{eps_imgs/graph16}
 \caption{Un grafo sin rulos.}
 \label{fig:graph16}
 \end{figure}
