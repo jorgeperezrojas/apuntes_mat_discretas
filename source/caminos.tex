@@ -22,7 +22,7 @@ Por simplicidad supondremos que un camino (o ciclo, o caminata) de largo $0$ es 
 En el grafo de la figura~\ref{fig:graph16-b} las secuencia:
 \begin{figure}[h!]
 \centering
-\includegraphics{graph16}
+\includegraphics{eps_imgs/graph16}
 \caption{Grafo sin rulos}
 \label{fig:graph16-b}
 \end{figure}
@@ -39,7 +39,7 @@ En ellos es necesario nombrar las aristas dado que el grafo no es simple.
 En el grafo simple de la figura~\ref{fig:graph17} podemos decir que las secuencias:
 \begin{figure}[h!]
 \centering
-\includegraphics{graph17}
+\includegraphics{eps_imgs/graph17}
 \caption{Grafo simple}
 \label{fig:graph17}
 \end{figure}
@@ -73,7 +73,7 @@ En la figura~\ref{fig:conex-components} se ha dibujado $G_2$ de manera de mostra
 \begin{figure}[h!]
 \centering
 \begin{tabular}{cccc}
-\includegraphics{graph18} & & & \includegraphics{graph19} \\
+\includegraphics{eps_imgs/graph18} & & & \includegraphics{eps_imgs/graph19} \\
 $G_1$ & & & $G_2$
 \end{tabular}
 \caption{$G_1$ es un grafo conexo, mientras que $G_2$ no lo es.}
@@ -81,7 +81,7 @@ $G_1$ & & & $G_2$
 \end{figure}
 \begin{figure}[h!]
 \centering
-\includegraphics{graph20}
+\includegraphics{eps_imgs/graph20}
 \caption{Componentes conexas de $G_2$.}
 \label{fig:conex-components}
 \end{figure}
@@ -150,7 +150,7 @@ El camino $P$ junto con la arista $uv$ forman un ciclo en $G$.
 
 \begin{figure}[h!]
 \centering
-\hspace*{6em}\includegraphics{cut-edge}
+\hspace*{6em}\includegraphics{eps_imgs/cut-edge}
 \caption{Una arista es de corte sólo si no pertenece a un ciclo.}
 \label{fig:cut-edge}
 \end{figure}
@@ -177,7 +177,7 @@ Ahora tomemos una caminata $C$ cerrada de largo $l$ impar y supongamos como hip�
 Si en $C$ no se repiten vértices entonces $C$ ya es un ciclo de largo impar y comprobamos lo que queríamos, si por otro lado en $C$ se repite un vértice, digamos $v$, entonces podemos partir $C$ en dos caminatas cerradas distintas que comienzan en $v$, $C'$ y $C''$ como se muestra en la figura~\ref{fig:odd-walk}.
 \begin{figure}[h!]
 \centering
-\includegraphics{odd-walk}
+\includegraphics{eps_imgs/odd-walk}
 \caption{Una caminata cerrada que repite un vértice, dividida en dos caminatas cerradas}
 \label{fig:odd-walk}
 \end{figure}
@@ -231,7 +231,7 @@ En la figura~\ref{fig:graph21} se muestra un grafo que si es Euleriano, de hecho
 
 \begin{figure}[h!]
 \centering
-\includegraphics{graph21}
+\includegraphics{eps_imgs/graph21}
 \caption{Grafo Euleriano.}
 \label{fig:graph21}
 \end{figure}
@@ -246,7 +246,7 @@ $(\Rightarrow)$ Supongamos que $G$ es Euleriano, entonces $G$ tiene un ciclo que
 El ciclo necesita una arista para ``salir'' de $v$ y otra para ``llegar'' finalmente a $v$, y cada vez que $v$ aparece nuevamente en el ciclo necesita dos aristas distintas más (una para entrar y otra para salir), un diagrama se ve en la figura~\ref{fig:graph22}.
 \begin{figure}[h!]
 \centering
-\includegraphics{graph22}
+\includegraphics{eps_imgs/graph22}
 \caption{Un vértice $v$ particular del ciclo Euleriano y sus artistas incidentes.}
 \label{fig:graph22}
 \end{figure}
@@ -265,7 +265,7 @@ Demostraremos por inducción en el número de aristas de $G$ que $G$ tiene un ci
  
 \begin{figure}[h!]
 \centering
-\includegraphics{bi-euler}
+\includegraphics{eps_imgs/bi-euler}
 \caption{Los grafos más pequeños conexos y tal que sus vértices tienen grado par.}
 \label{fig:bi-euler}
 \end{figure}
@@ -278,7 +278,7 @@ Demostraremos por inducción en el número de aristas de $G$ que $G$ tiene un ci
   
   \begin{figure}[h!]
   \centering
-  \includegraphics{ti-euler1}
+  \includegraphics{eps_imgs/ti-euler1}
   \caption{Camino de largo $2$ en un grafo con al menos $3$ vértices.}
   \label{fig:ti-euler1}
   \end{figure}
@@ -287,7 +287,7 @@ Demostraremos por inducción en el número de aristas de $G$ que $G$ tiene un ci
   Un diagrama de $G'$ se ve en la figura~\ref{fig:ti-euler2}.
   \begin{figure}[h!]
   \centering
-  \includegraphics{ti-euler2}
+  \includegraphics{eps_imgs/ti-euler2}
   \caption{Creación de $G'$ a partir de la eliminación de $e_1$ y $e_2$ y la inserción de $e'$.}
   \label{fig:ti-euler2}
   \end{figure}
@@ -301,7 +301,7 @@ Demostraremos por inducción en el número de aristas de $G$ que $G$ tiene un ci
   Un diagrama de esta construcción se ve en la figura~\ref{fig:ti-euler3}.
   \begin{figure}[h!]
   \centering
-  \includegraphics[width=\textwidth]{ti-euler3}
+  \includegraphics[width=\textwidth]{eps_imgs/ti-euler3}
   \caption{Construcción de un ciclo Euleriano para $G$ a partir de uno para $G'$}
   \label{fig:ti-euler3}
   \end{figure}
@@ -315,7 +315,7 @@ Demostraremos por inducción en el número de aristas de $G$ que $G$ tiene un ci
   
   \begin{figure}[h!]
   \centering
-  \includegraphics[width=\textwidth]{ti-euler4}
+  \includegraphics[width=\textwidth]{eps_imgs/ti-euler4}
   \caption{Construcción de un ciclo Euleriano para $G$ a partir de los ciclos en las dos componentes de $G'$}
   \label{fig:ti-euler4}
   \end{figure}
@@ -349,7 +349,7 @@ Recuerde que para ser un camino, no debe repetir aristas de $G$.
 El grafo de la figura~\ref{fig:graph23} no tiene un ciclo Euleriano ya que por ejemplo el vértice $v_3$ tiene grado 3, pero si tiene un camino Euleriano, de hecho el camino $(v_3,v_2,v_1,v_5,v_2,v_4,v_3,v_5,v_4)$ contiene a todos los vértices y a todas las aristas.
 \begin{figure}[h!]
 \centering
-\includegraphics{graph23}
+\includegraphics{eps_imgs/graph23}
 \caption{Un grafo que contiene un camino Euleriano.}
 \label{fig:graph23}
 \end{figure}
@@ -381,7 +381,7 @@ Considere los grafos de la figura~\ref{fig:graph24}
 Después de probar un poco nos damos cuenta de que en $G_1$ si existe tal ciclo, por ejemplo $(v_1,v_2,v_3,v_4,v_5,v_1)$, pero que en $G_2$ y en $G_3$ es imposible encontrar un ciclo de estas características.
 \begin{figure}[h!]
 \centering
-\includegraphics{graph24}
+\includegraphics{eps_imgs/graph24}
 \caption{Solo $G_1$ tiene un ciclo Hamiltoniano.}
 \label{fig:graph24}
 \end{figure}
